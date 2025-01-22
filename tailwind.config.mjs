@@ -7,7 +7,10 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				serif: ['source-serif-4', ...defaultTheme.fontFamily.serif],
+				serif: [
+					'Source Serif 4 Variable',
+					...defaultTheme.fontFamily.serif,
+				],
 			},
 		},
 	},
