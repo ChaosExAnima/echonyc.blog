@@ -3,6 +3,10 @@
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 
+import '@fontsource-variable/source-serif-4'
+import sourceSerif4 from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-standard-normal.woff2?url'
+
+
 interface Props {
 	description: string;
 	image?: string;
@@ -21,8 +25,7 @@ const { description, image = '/blog-placeholder-1.jpg', title } = Astro.props;
 <meta content={Astro.generator} name="generator" />
 
 <!-- Font preloads -->
-<link as="font" crossorigin href="/fonts/atkinson-regular.woff" rel="preload" type="font/woff" />
-<link as="font" crossorigin href="/fonts/atkinson-bold.woff" rel="preload" type="font/woff" />
+<link as="font" crossorigin="anonymous" href={sourceSerif4} rel="preload" type="font/woff2" />
 
 <!-- Canonical URL -->
 <link href={canonicalURL} rel="canonical" />
