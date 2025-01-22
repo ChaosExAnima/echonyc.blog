@@ -1,17 +1,35 @@
 {
-  "name": "echonyc-blog",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^4.0.7",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.1.8"
-  }
+	"name": "echonyc-blog",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "eslint ."
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^4.0.7",
+		"@astrojs/partytown": "^2.1.3",
+		"@astrojs/react": "^4.1.6",
+		"@astrojs/rss": "^4.0.11",
+		"@astrojs/sitemap": "^3.2.1",
+		"@astrojs/tailwind": "^5.1.5",
+		"@types/react": "^19.0.7",
+		"@types/react-dom": "^19.0.3",
+		"astro": "^5.1.8",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"tailwindcss": "^3.4.17"
+	},
+	"devDependencies": {
+		"@typescript-eslint/parser": "^8.21.0",
+		"eslint": "^9.18.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-astro": "^1.3.1",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-perfectionist": "^4.7.0",
+		"prettier": "^3.4.2"
+	}
 }
