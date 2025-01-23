@@ -1,5 +1,5 @@
 ---
-title: 'Visibility &amp; Empowerment'
+title: 'Visibility & Empowerment'
 date: '2019-04-01'
 categories:
     - 'musings'
