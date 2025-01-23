@@ -1,4 +1,4 @@
-import type { CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 export function getPostParams(post: CollectionEntry<'blog'>) {
 	const { date } = post.data;
@@ -16,4 +16,10 @@ export function getPostParams(post: CollectionEntry<'blog'>) {
 export function getPostPath(post: CollectionEntry<'blog'>) {
 	const { year, month, slug } = getPostParams(post);
 	return `/blog/${year}/${month}/${slug}`;
+}
+
+export async function getPosts() {
+	return (await getCollection('blog')).sort(
+		(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+	);
 }

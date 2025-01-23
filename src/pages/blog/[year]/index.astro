@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+
+import PostList from '~/components/PostList.astro';
+import Prose from '~/components/Prose.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getPosts } from '~/lib/posts';
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async () => {
+	const posts = await getPosts();
+	const yearPosts = Object.groupBy(posts, ({ data: { date } }) =>
+		date.getFullYear(),
+	);
+	return Object.entries(yearPosts).map(([year, posts]) => ({
+		params: { year },
+		props: { posts, year },
+	}));
+}) satisfies GetStaticPaths;
+
+const { posts, year } = Astro.props;
+---
+
+<BaseLayout>
+	<Prose as="header" className="mb-10">
+		<h1>
+			Posts from: <strong class="font-normal">{year}</strong>
+		</h1>
+	</Prose>
+	<PostList posts={posts!} />
+</BaseLayout>

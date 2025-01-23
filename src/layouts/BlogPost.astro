@@ -37,8 +37,11 @@ const { categories, coverImage, date, title } = Astro.props;
 				categories.length > 0 && (
 					<span>
 						&ndash; Filed under:&nbsp;
-						{categories.map((category) => (
-							<a href={`/category/${category}`}>{category}</a>
+						{categories.map((category, index) => (
+							<>
+								<a href={`/category/${category}`}>{category}</a>
+								{index < categories.length - 1 && ', '}
+							</>
 						))}
 					</span>
 				)
