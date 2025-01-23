@@ -10,7 +10,7 @@ import BaseLayout from './BaseLayout.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { coverImage, date, title } = Astro.props;
+const { categories, coverImage, date, title } = Astro.props;
 ---
 
 <BaseLayout title={title}>
@@ -33,6 +33,16 @@ const { coverImage, date, title } = Astro.props;
 		<h1 class="mb-0">{title}</h1>
 		<p class="italic font-light text-base mb-10">
 			<FormattedDate date={date} />
+			{
+				categories.length > 0 && (
+					<span>
+						&ndash; Filed under:&nbsp;
+						{categories.map((category) => (
+							<a href={`/category/${category}`}>{category}</a>
+						))}
+					</span>
+				)
+			}
 		</p>
 		<slot />
 	</Prose>

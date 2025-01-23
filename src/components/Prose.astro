@@ -1,8 +1,13 @@
 ---
-const { className } = Astro.props;
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+type Props<Tag extends HTMLTag> = {
+	className?: string;
+} & Polymorphic<{ as: Tag }>;
+const { as: Component = 'article', className } = Astro.props;
 ---
 
-<article
+<Component
 	class:list={[
 		'prose prose-invert prose-violet prose-xl prose-stone mx-auto',
 		'prose-headings:font-thin hover:prose-a:text-violet-400 prose-a:transition-colors',
@@ -10,4 +15,4 @@ const { className } = Astro.props;
 	]}
 >
 	<slot />
-</article>
+</Component>

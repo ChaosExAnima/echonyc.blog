@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+import PostList from '~/components/PostList.astro';
+import Prose from '~/components/Prose.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async () => {
+	const posts = await getCollection('blog');
+
+	const categoryPosts: Record<string, CollectionEntry<'blog'>[]> = {};
+	for (const post of posts) {
+		for (const category of post.data.categories) {
+			categoryPosts[category] = (categoryPosts[category] ?? []).concat(
+				post,
+			);
+		}
+	}
+	return Object.entries(categoryPosts).map(([category, posts]) => ({
+		params: { slug: category },
+		props: { category, posts },
+	}));
+}) satisfies GetStaticPaths;
+
+const { category, posts } = Astro.props;
+---
+
+<BaseLayout>
+	<Prose as="header" className="mb-10">
+		<h1>{category}</h1>
+	</Prose>
+	<PostList posts={posts} />
+</BaseLayout>

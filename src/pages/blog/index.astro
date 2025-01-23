@@ -1,9 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
+
 import PostList from '~/components/PostList.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 9);
 ---
 
 <BaseLayout title="Blog posts">
 	<h1 class="text-4xl mb-10 mt-20">My Writings</h1>
-	<PostList />
+	<PostList posts={posts} />
 </BaseLayout>
