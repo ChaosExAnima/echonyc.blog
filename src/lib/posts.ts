@@ -1,10 +1,10 @@
 import type { CollectionEntry } from 'astro:content';
 
 export function getPostParams(post: CollectionEntry<'blog'>) {
-	const { pubDate } = post.data;
+	const { date } = post.data;
 
-	const year = String(pubDate.getFullYear()).padStart(4, '0');
-	const month = String(pubDate.getMonth() + 1).padStart(2, '0');
+	const year = String(date.getFullYear()).padStart(4, '0');
+	const month = String(date.getMonth() + 1).padStart(2, '0');
 
 	return {
 		year,

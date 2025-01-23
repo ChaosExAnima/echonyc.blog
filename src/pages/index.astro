@@ -1,33 +1,41 @@
 ---
 import PostList from '~/components/PostList.astro';
+import Prose from '~/components/Prose.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
-	<h1 class="text-4xl mb-10 mt-20">Howdy, I'm Echo!</h1>
-	<p class="my-4">
-		This is my website where I put some of my writings and other personal
-		things. I am a web engineer, Jewish, trans and queer, goth, and a
-		LARPer. My pronouns are xhe/xer. I live in Berlin with my two kitties
-		Molly and Missy.
-	</p>
-	<p class="my-4">
-		Feel free to browse around or look me up on various social media:
-	</p>
-	<ul class="flex gap-4 my-4">
-		<li>
-			<a href="https://bsky.app/profile/echo.ishella.gay" rel="me">
-				Bluesky
-			</a>
-		</li>
-		<li><a href="https://tech.lgbt/@chaosexanima" rel="me">Mastodon</a></li>
-		<li>
-			<a href="https://instagram.com/chaosexanima" rel="me noreferrer">
-				Instagram
-			</a>
-		</li>
-	</ul>
-	<h2 class="text-3xl mb-4 mt-10">Latest writings</h2>
-	<p class="my-4 font-light"><a href="/blog">See more&hellip;</a></p>
+	<Prose>
+		<h1>Howdy, I'm Echo!</h1>
+		<p>
+			This is my website where I put some of my writings and other
+			personal things. I am a web engineer, Jewish, trans and queer, goth,
+			and a LARPer. My pronouns are xhe/xer. I live in Berlin with my two
+			kitties Molly and Missy.
+		</p>
+		<p>Feel free to browse around or look me up on various social media:</p>
+		<ul>
+			<li>
+				<a href="https://bsky.app/profile/echo.ishella.gay" rel="me">
+					Bluesky
+				</a>
+			</li>
+			<li>
+				<a href="https://tech.lgbt/@chaosexanima" rel="me">Mastodon</a>
+			</li>
+			<li>
+				<a
+					href="https://instagram.com/chaosexanima"
+					rel="me noreferrer"
+				>
+					Instagram
+				</a>
+			</li>
+		</ul>
+		<h2 class="flex gap-4 items-baseline mb-10">
+			<span> Latest writings</span>
+			<a class="text-base font-light" href="/blog">See more&hellip;</a>
+		</h2>
+	</Prose>
 	<PostList limit="3" />
 </BaseLayout>
