@@ -1,9 +1,11 @@
 ---
 import { SITE_TITLE } from '~/consts';
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="max-w-screen-2xl mx-auto my-10">
-	<p class="font-light">
-		{SITE_TITLE}
-	</p>
+<footer class="bg-black px-10">
+	<div class="font-light max-w-screen-2xl mx-auto py-10">
+		{SITE_TITLE}, {year}
+	</div>
 </footer>

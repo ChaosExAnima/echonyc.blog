@@ -4,11 +4,19 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header class="max-w-screen-2xl mx-auto my-10">
-	<nav class="flex gap-4 items-center justify-between">
-		<div>
-			<h2 class="text-2xl mb-2"><a href="/">{SITE_TITLE}</a></h2>
-			<h3 class="italic font-light text-base">{SITE_DESCRIPTION}</h3>
+<header class="bg-black px-10">
+	<nav
+		class="flex flex-col sm:flex-row gap-4 items-center justify-between max-w-screen-2xl mx-auto py-10"
+	>
+		<div
+			class="text-center sm:text-left hover:text-violet-400 transition-colors"
+		>
+			<a href="/">
+				<h2 class="text-2xl mb-2">{SITE_TITLE}</h2>
+				<h3 class="italic font-light text-base">
+					{SITE_DESCRIPTION}
+				</h3></a
+			>
 		</div>
 		<ol class="flex gap-4">
 			<HeaderLink href="/">Home</HeaderLink>

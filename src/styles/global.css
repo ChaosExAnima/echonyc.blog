@@ -1,19 +1,22 @@
-body {
+:root {
 	font-family: 'Source Serif 4 Variable', serif;
 }
 
 .image-filter {
-	filter: url('data:image/svg+xml,\
-		<svg xmlns="http://www.w3.org/2000/svg">\
-			<filter id="purple">\
-				<feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>\
-				<feComponentTransfer color-interpolation-filters="sRGB">\
-					<feFuncR type="table" tableValues="0.15686274509804 1"></feFuncR>\
-					<feFuncG type="table" tableValues="0 1"></feFuncG>\
-					<feFuncB type="table" tableValues="0.23529411764706 1"></feFuncB>\
-					<feFuncA type="table" tableValues="1 1"></feFuncA>\
-				</feComponentTransfer>\
-				<feComposite in2="SourceGraphic" operator="in"></feComposite>\
-			</filter>\
-		</svg>#purple');
+	transition: filter 0.5s;
+	filter: sepia(100%) hue-rotate(230deg) brightness(90%);
+}
+.image-filter:hover {
+	filter: sepia(100%) hue-rotate(230deg) brightness(100%);
+}
+
+.image-fade::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: linear-gradient(to top, #000, transparent);
+	height: 10rem;
 }
