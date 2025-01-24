@@ -3,7 +3,6 @@ title: 'Fabulous and Femme'
 date: '2019-02-15'
 categories:
     - 'me'
-tags:
     - 'queerness'
 ---
 

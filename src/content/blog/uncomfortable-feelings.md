@@ -4,6 +4,7 @@ date: '2019-04-22'
 categories:
     - 'me'
 coverImage: 'images/eec12-179thshulcapture.jpg'
+coverAlt: 'Photo of a synagogue vaguely in the shape of a castle'
 ---
 
 CW: Judaism negativity, childhood trauma, ancestry, organized religion, mental health, Holocaust mention

@@ -11,7 +11,7 @@ const posts = (await getCollection('blog'))
 ---
 
 <BaseLayout>
-	<Prose>
+	<Prose class="mt-10">
 		<h1>Howdy, I'm Echo!</h1>
 		<p>
 			This is my website where I put some of my writings and other
@@ -22,12 +22,17 @@ const posts = (await getCollection('blog'))
 		<p>Feel free to browse around or look me up on various social media:</p>
 		<ul>
 			<li>
-				<a href="https://bsky.app/profile/echo.ishella.gay" rel="me">
+				<a
+					href="https://bsky.app/profile/echo.ishella.gay"
+					rel="me noreferrer"
+				>
 					Bluesky
 				</a>
 			</li>
 			<li>
-				<a href="https://tech.lgbt/@chaosexanima" rel="me">Mastodon</a>
+				<a href="https://tech.lgbt/@chaosexanima" rel="me noreferrer">
+					Mastodon
+				</a>
 			</li>
 			<li>
 				<a
@@ -36,6 +41,9 @@ const posts = (await getCollection('blog'))
 				>
 					Instagram
 				</a>
+			</li>
+			<li>
+				<a href="https://echo.tumblr.com" rel="me noreferrer">Tumblr</a>
 			</li>
 		</ul>
 		<h2 class="flex flex-col sm:flex-row gap-4 items-baseline mb-10">

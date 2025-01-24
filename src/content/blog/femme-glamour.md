@@ -4,6 +4,7 @@ date: '2019-07-28'
 categories:
     - 'musings'
 coverImage: 'images/c4791-5439502731_af718d4445_o.jpg'
+coverAlt: 'A red candle on red background'
 ---
 
 I'm currently reading the book [Becoming Dangerous](https://www.goodreads.com/book/show/36555616-becoming-dangerous), an anthology about witchcraft and femmes. There's a few entries there exploring the intersection of femme aesthetic and magick[1](#1), whether the armour of lipstick or the power of color.

@@ -3,9 +3,9 @@ title: 'Responsibility'
 date: '2019-07-03'
 categories:
     - 'musings'
-tags:
     - 'queerness'
 coverImage: 'images/f862a-judge-gavel-1461965939b8a.jpg'
+coverAlt: "Judge's gavel on a book"
 ---
 
 I feel like I have a lot of responsibilities nowadays.

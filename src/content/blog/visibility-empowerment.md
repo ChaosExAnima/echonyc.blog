@@ -4,10 +4,9 @@ date: '2019-04-01'
 categories:
     - 'musings'
     - 'transness'
-tags:
     - 'queerness'
-    - 'trans'
 coverImage: 'images/ff45e-trans-flag.png'
+coverAlt: 'The trans flag colors'
 ---
 
 Today is [Trans Day of Visibility](https://en.wikipedia.org/wiki/International_Transgender_Day_of_Visibility). One year ago, I was in a bunk bed in Denmark, lonely and exhausted, and I posted something briefly to Facebook about being trans before passing out. I woke up to huge amount of support (mostly), and felt really good about myself.

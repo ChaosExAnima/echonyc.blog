@@ -3,10 +3,10 @@ title: 'Stay Safe!'
 date: '2020-06-30'
 categories:
     - 'musings'
-tags:
     - 'queer'
     - 'trans'
 coverImage: 'images/4fdb6-pexels-photo-4614160.jpeg'
+coverAlt: 'Photo of Black Lives Matter protestors wearing masks'
 ---
 
 I hear people say something a lot when I mention I'm going to a protest: "stay safe!"

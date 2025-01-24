@@ -4,6 +4,7 @@ date: '2020-05-25'
 categories:
     - 'shows'
 coverImage: 'images/fcc75-pexels-photo-2726370.jpeg'
+coverAlt: 'Coffee cup with blurred Netflix logo in the background'
 ---
 
 So I haven't written here in a while. Chalk it up to my intense depression and lack of motivation. This post won't be very insightful or filled with meanings. I'm mostly just trying to get back into the practice of writing.

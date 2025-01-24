@@ -3,10 +3,10 @@ title: "Books n' Things"
 date: '2019-03-13'
 categories:
     - 'books'
-tags:
     - 'queerness'
     - 'trans'
 coverImage: 'images/0f2d7-8314929977_28fd740070_b.jpg'
+coverAlt: 'A pile of books'
 ---
 
 So I've mentioned a lot in the way of books. I actually have started reading a lot since I came out as queer, looking to discover more of my new heritage and history.

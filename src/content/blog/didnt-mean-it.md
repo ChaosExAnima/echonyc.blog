@@ -4,6 +4,7 @@ date: '2019-08-18'
 categories:
     - 'musings'
 coverImage: 'images/01441-broken_glass_18434524128.jpg'
+coverAlt: 'Close up of a pane of cracked glass'
 ---
 
 _"Hey, I hope you know I didn't mean it."_

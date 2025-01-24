@@ -4,11 +4,10 @@ date: '2019-02-04'
 categories:
     - 'me'
     - 'musings'
-tags:
     - 'feels'
 ---
 
-> Fine is the suckiest word  
+> Fine is the suckiest word
 > it never tells the truth
 >
 > Andrea Gibson, Panic Button Collector

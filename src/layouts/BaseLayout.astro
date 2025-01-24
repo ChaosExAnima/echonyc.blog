@@ -4,11 +4,24 @@ import Footer from '~/components/Footer.astro';
 import Header from '~/components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
+interface Props {
+	class?: string;
+	description?: string;
+	title?: string;
+}
+
 const {
-	className = '',
+	class: className = '',
 	description = SITE_DESCRIPTION,
-	title = SITE_TITLE,
+	title: propTitle,
 } = Astro.props;
+
+let title = '';
+if (propTitle) {
+	title = `${propTitle} – ${SITE_TITLE}`;
+} else {
+	title = `${SITE_TITLE} – ${SITE_DESCRIPTION}`;
+}
 ---
 
 <html lang="en">

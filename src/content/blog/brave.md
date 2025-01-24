@@ -4,6 +4,7 @@ date: '2020-09-02'
 categories:
     - 'transness'
 coverImage: 'images/pexels-photo-3876328.jpeg'
+coverAlt: 'Beach with mountains in the distance and a lone figure walking into the water'
 ---
 
 CW: trans violence, racism, medical transphobia

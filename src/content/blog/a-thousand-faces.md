@@ -4,7 +4,6 @@ date: '2019-02-25'
 categories:
     - 'me'
     - 'musings'
-tags:
     - 'identity'
     - 'queerness'
 ---

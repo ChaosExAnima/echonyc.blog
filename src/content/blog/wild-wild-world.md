@@ -4,6 +4,7 @@ date: '2022-03-12'
 categories:
     - 'musings'
 coverImage: 'images/pexels-photo-4786270.jpeg'
+coverAlt: 'Photo looking out an open window onto a city'
 ---
 
 Hi folks! It's been a while, hasn't it? Since my last post I've been dealing with my mental health and just \*gestures at world\*.

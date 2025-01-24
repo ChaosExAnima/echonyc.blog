@@ -4,6 +4,7 @@ date: '2019-09-04'
 categories:
     - 'musings'
 coverImage: 'images/ddd6d-beautiful-flower-flower-hike-2658016.jpg'
+coverAlt: 'Close up of a yellow flower'
 ---
 
 Virgo season is upon us, and with it my mind has turned to what could be. I've been talking to friends about hopes and what I want for the future.

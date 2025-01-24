@@ -4,6 +4,7 @@ date: '2019-05-05'
 categories:
     - 'musings'
 coverImage: 'images/65599-img_20190505_144341.jpg'
+coverAlt: 'Close up of a necklace with wooden pendant'
 ---
 
 This past weekend I travelled to Atlantic City to experience [Changeling: Waking Dreams](https://changelingwakingdreams.com/). The event is based on [Changeling: the Dreaming](https://en.wikipedia.org/wiki/Changeling:_The_Dreaming) by White Wolf, a game about fae beings trying to survive, trapped in human hosts in the mundane world.

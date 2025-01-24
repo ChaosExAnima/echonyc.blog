@@ -5,6 +5,7 @@ categories:
     - 'poems'
     - 'transness'
 coverImage: 'images/8e371-iris_-_right_eye_of_a_girl.jpg'
+coverAlt: 'Close up of an eye of a white person with blue eyes'
 ---
 
 When you look,

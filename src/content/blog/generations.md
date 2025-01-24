@@ -4,6 +4,7 @@ date: '2019-12-31'
 categories:
     - 'musings'
 coverImage: 'images/b93bd-full_featured_double_rainbow_at_savonlinna_1000px.jpg'
+coverAlt: 'Landscape with large double rainbow'
 ---
 
 I've been thinking a lot about generational differences lately, and the differing viewpoints within the LGBTQIA+ communities from various eras.

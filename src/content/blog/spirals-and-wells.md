@@ -4,7 +4,6 @@ date: '2019-03-20'
 categories:
     - 'me'
     - 'musings'
-tags:
     - 'mental-health'
 ---
 
@@ -28,8 +27,8 @@ Transition definitely affected things. I'm more emotional, more easily depressed
 
 I wish I had something to tell you. But to quote one of my favorite bands:
 
-> I've wracked my brain with clever sayings of all the things you ought to do  
-> But you know I think if there was something I could say  
+> I've wracked my brain with clever sayings of all the things you ought to do
+> But you know I think if there was something I could say
 > They would've thrown it on a brochure and sent you on your way
 >
 > [Icon For Hire, Under The Knife](https://www.youtube.com/watch?v=Sk6HMuLJ8bM)

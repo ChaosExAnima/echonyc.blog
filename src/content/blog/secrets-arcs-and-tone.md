@@ -4,6 +4,7 @@ date: '2019-11-08'
 categories:
     - 'musings'
 coverImage: 'images/0177b-1_eduyl7l8n39gsdb-kfltog.jpeg'
+coverAlt: 'Old looking black and white photo of person making shush motion'
 ---
 
 So I'm writing this sitting at Metatopia, a game design convention in New Jersey. I see friends and interesting people everywhere, and I have a semi-packed schedule exploring new games and helping designers bring their works to life.

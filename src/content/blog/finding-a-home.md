@@ -4,6 +4,7 @@ date: '2019-10-27'
 categories:
     - 'musings'
 coverImage: 'images/9d1ec-44063620345_c38d32921b_k_d.jpg'
+coverAlt: 'Photo of a fancy three story house'
 ---
 
 It's been an interesting few weeks. I've gotten brought into a strange (but good!) tech world at Automattic, and had some alone time to feel out parts of myself.

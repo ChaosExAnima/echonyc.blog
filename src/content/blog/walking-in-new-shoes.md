@@ -6,11 +6,10 @@ categories:
     - 'musings'
     - 'politics'
     - 'transness'
-tags:
     - 'queerness'
     - 'spirituality'
-    - 'trans'
 coverImage: 'images/5f87e-p7.jpg'
+coverAlt: 'Photo of worn purple Doc Marten boots'
 ---
 
 Hi there! It's been a while.

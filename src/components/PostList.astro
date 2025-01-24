@@ -20,7 +20,7 @@ const { posts } = Astro.props;
 					<h4 class="font-thin text-3xl mb-4">{post.data.title}</h4>
 					{post.data.coverImage && (
 						<Image
-							alt={`Image for post ${post.data.title}`}
+							alt={post.data.coverAlt ?? ''}
 							class="object-cover h-80 image-filter rounded-md"
 							src={post.data.coverImage}
 						/>

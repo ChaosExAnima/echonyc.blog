@@ -4,10 +4,10 @@ date: '2019-01-27'
 categories:
     - 'books'
     - 'musings'
-tags:
-    - 'new-york'
     - 'queerness'
+    - 'new-york'
 coverImage: 'images/5c718-gettyimages-465625320.jpg'
+coverAlt: 'Photo from the inside of an empty NYC subway car'
 ---
 
 I'm surrounded by ghosts.

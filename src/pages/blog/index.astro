@@ -1,12 +1,15 @@
 ---
 import PostList from '~/components/PostList.astro';
+import Prose from '~/components/Prose.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { getPosts } from '~/lib/posts';
 
-const posts = (await getPosts()).slice(0, 9);
+const posts = await getPosts();
 ---
 
-<BaseLayout title="Blog posts">
-	<h1 class="text-4xl mb-10 mt-20">My Writings</h1>
+<BaseLayout title="My Writings">
+	<Prose as="header" class="my-10">
+		<h1>My Writings</h1>
+	</Prose>
 	<PostList posts={posts} />
 </BaseLayout>

@@ -3,10 +3,10 @@ title: 'The Queer and the City'
 date: '2019-01-17'
 categories:
     - 'musings'
-tags:
     - 'new-york'
     - 'queerness'
 coverImage: 'images/e9642-gettyimages-538096543_medium.jpg'
+coverAlt: 'Photo of New York City cityscape during sunset'
 ---
 
 I was reading [Confessions of the Fox](https://www.penguinrandomhouse.com/books/556691/confessions-of-the-fox-by-jordy-rosenberg/9780399592287/) by Jordy Rosenberg recently, and a passage stuck out to me:

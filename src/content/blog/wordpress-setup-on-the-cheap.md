@@ -2,9 +2,6 @@
 title: 'WordPress Setup on the Cheap'
 date: '2019-01-11'
 categories:
-    - 'wordpress'
-tags:
-    - 'help'
     - 'tech'
 ---
 

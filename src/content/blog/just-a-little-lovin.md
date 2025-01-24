@@ -4,6 +4,7 @@ date: '2019-08-08'
 categories:
     - 'larp'
 coverImage: 'images/87624-img_20190808_115723.jpg'
+coverAlt: 'Close up of purple glasses, a pink feather, and a picture of a feather'
 ---
 
 > _I walked with my lover, hand in hand, looking down at blue gems winking in the green grass when my tears would let me. We stopped, and I heard Death say,_
@@ -32,7 +33,7 @@ In this I will skip the details of what happened specifically with my character 
 
 <figure>
 
-![](https://echonyc.blog/wp-content/uploads/2020/07/d0273-img_20190731_175118_253.jpg?w=300&h=300)
+![Photo of me in my costume with big purple glasses](images/d0273-img_20190731_175118_253.jpg)
 
 <figcaption>
 

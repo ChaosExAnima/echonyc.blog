@@ -4,6 +4,7 @@ date: '2019-07-09'
 categories:
     - 'larp'
 coverImage: 'images/7fa9a-34284695_10155871317008802_5324042336294928384_o.jpg'
+coverAlt: 'Figures with angular white masks and silvery blocks'
 ---
 
 Okay, so visiting one of the topics I thought of before: wordless storytelling games. I've played a few of these with little or no speaking, and every time they leave a lasting impression on me, so I'd like to explore that a little bit.

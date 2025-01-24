@@ -4,6 +4,7 @@ date: '2020-09-07'
 categories:
     - 'politics'
 coverImage: 'images/pexels-photo-1181344.jpeg'
+coverAlt: 'Black and white photo of people seated around a conference room with raised hands'
 ---
 
 CW: USA Politics, trans violence and racism mention

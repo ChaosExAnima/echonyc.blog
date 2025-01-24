@@ -3,9 +3,9 @@ title: 'Face Time'
 date: '2020-12-14'
 categories:
     - 'transness'
-tags:
     - 'medical'
 coverImage: 'images/pexels-photo-1081685.jpeg'
+coverAlt: 'Face of a Black person with stars shining on their cheek'
 ---
 
 So in case y'all didn't realize, I am a transgender femme. I don't identify with binary identities, but my body dysphoria tends to align with the experience of trans women so I seek medical procedures similar to them.

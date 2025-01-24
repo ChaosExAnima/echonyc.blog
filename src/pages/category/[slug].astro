@@ -15,7 +15,7 @@ export const getStaticPaths = (async () => {
 
 	const categoryPosts: Record<string, CollectionEntry<'blog'>[]> = {};
 	for (const post of posts) {
-		for (const category of post.data.categories) {
+		for (const category of post.data.categories ?? []) {
 			categoryPosts[category] = (categoryPosts[category] ?? []).concat(
 				post,
 			);
@@ -31,11 +31,13 @@ const { category, posts } = Astro.props;
 ---
 
 <BaseLayout>
-	<h1 class="font-thin text-6xl text-center mb-10">
-		Posts filed as:
-		<strong class="font-normal capitalize">
-			{category}
-		</strong>
-	</h1>
+	<Prose as="header" class="my-10">
+		<h1>
+			Posts filed as:
+			<strong class="font-normal capitalize">
+				{category}
+			</strong>
+		</h1>
+	</Prose>
 	<PostList posts={posts} />
 </BaseLayout>
