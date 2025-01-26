@@ -9,5 +9,9 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	integrations: [mdx(), sitemap(), react(), tailwind(), partytown()],
+	redirects: {
+		'/my-pronouns': '/blog/2019/01/my-pronouns',
+		'/pronouns': '/blog/2019/01/my-pronouns',
+	},
 	site: 'https://example.com',
 });

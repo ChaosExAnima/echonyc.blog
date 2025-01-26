@@ -8,6 +8,9 @@ const eslintConfig = [
 	eslintConfigPrettier,
 	{
 		ignores: ['.astro/'],
+		rules: {
+			'astro/jsx-a11y/media-has-caption': ['off'],
+		},
 	},
 ];
 

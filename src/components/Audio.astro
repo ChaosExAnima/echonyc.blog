@@ -1,0 +1,13 @@
+---
+interface Props {
+	caption?: string;
+	src: string;
+}
+
+const { caption, src } = Astro.props;
+---
+
+<figure>
+	<audio class="w-full" controls src={src}></audio>
+	{caption && <figcaption class="text-sm text-center">{caption}</figcaption>}
+</figure>
