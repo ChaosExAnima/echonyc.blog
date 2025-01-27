@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import { type CollectionEntry } from 'astro:content';
 
-import FormattedDate from '~/components/FormattedDate.astro';
-import { getPostPath } from '~/lib/posts';
+import PostItem from './PostItem.astro';
 
 interface Props {
 	posts: CollectionEntry<'blog'>[];
@@ -16,19 +14,7 @@ const { posts } = Astro.props;
 	{
 		posts.map((post) => (
 			<li>
-				<a href={getPostPath(post)}>
-					<h4 class="font-thin text-3xl mb-4">{post.data.title}</h4>
-					{post.data.coverImage && (
-						<Image
-							alt={post.data.coverAlt ?? ''}
-							class="object-cover h-80 image-filter rounded-md"
-							src={post.data.coverImage}
-						/>
-					)}
-					<p class="mt-4">
-						<FormattedDate date={post.data.date} />
-					</p>
-				</a>
+				<PostItem {...post} />
 			</li>
 		))
 	}

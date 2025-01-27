@@ -1,6 +1,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-export function getPostParams(post: CollectionEntry<'blog'>) {
+export type Post = CollectionEntry<'blog'>;
+
+export function getPostParams(post: Post) {
 	const { date } = post.data;
 
 	const year = String(date.getFullYear()).padStart(4, '0');
@@ -13,7 +15,7 @@ export function getPostParams(post: CollectionEntry<'blog'>) {
 	};
 }
 
-export function getPostPath(post: CollectionEntry<'blog'>) {
+export function getPostPath(post: Post) {
 	const { year, month, slug } = getPostParams(post);
 	return `/blog/${year}/${month}/${slug}`;
 }
