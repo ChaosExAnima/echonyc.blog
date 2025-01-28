@@ -1,3 +1,5 @@
+import crypto from 'node:crypto';
+
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'blog'>;
@@ -24,4 +26,16 @@ export async function getPosts() {
 	return (await getCollection('blog')).sort(
 		(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 	);
+}
+
+export async function hashFromTitle(post: Post) {
+	const { title } = post.data;
+	const hash = crypto.createHash('md5');
+	hash.update(title);
+	const hex = hash.digest().toString('hex');
+
+	const intValue = parseInt(hex.slice(0, 3), 16);
+	const hue = intValue % 360;
+
+	return `${hue}-${hex.slice(3, 6)}`;
 }

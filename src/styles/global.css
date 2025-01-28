@@ -9,14 +9,3 @@
 .image-filter:hover {
 	filter: sepia(100%) hue-rotate(230deg) brightness(100%);
 }
-
-.image-fade::after {
-	content: '';
-	display: block;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-image: linear-gradient(to top, #000, transparent);
-	height: 10rem;
-}
