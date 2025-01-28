@@ -1,26 +1,35 @@
 ---
 import { Image } from 'astro:assets';
 
+import { getThumbhash } from '~/lib/images';
 import { getPostPath, type Post } from '~/lib/posts';
 
 import FormattedDate from './FormattedDate.astro';
+import ImagePlaceholder from './Image';
 
 type Props = Post;
 const post = Astro.props;
 
 const gradient = 'bg-gradient-to-b from-stone-200 to-stone-800';
+const hash = post.data.coverImage
+	? await getThumbhash(post.data.coverImage)
+	: '';
 ---
 
 <a href={getPostPath(post)}>
 	{
 		post.data.coverImage && (
-			<Image
-				alt={post.data.coverAlt ?? ''}
-				class="object-cover h-80 image-filter rounded-md"
-				sizes={`(max-width: 768px) 680px, (max-width: 1024px) 480px, 370px`}
-				src={post.data.coverImage}
-				widths={[370, 440, 680, post.data.coverImage.width]}
-			/>
+			<ImagePlaceholder
+				className="h-80 image-filter rounded-md w-full"
+				client:only="react"
+				hash={hash}
+			>
+				<Image
+					alt={post.data.coverAlt ?? ''}
+					class="object-cover h-80 image-filter rounded-md w-full"
+					src={post.data.coverImage}
+				/>
+			</ImagePlaceholder>
 		)
 	}
 	{
