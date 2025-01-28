@@ -75,7 +75,11 @@ export async function getImageAsBuffer(src: Src): Promise<Buffer> {
 }
 
 export async function getThumbhash(src: ComponentProps<typeof Image>['src']) {
-	const path = (await srcToPath(src)).replace('/@fs', '').replace(/\?.+/, '');
+	let path = (await srcToPath(src)).replace('/@fs', '').replace(/\?.+/, '');
+	if (import.meta.env.MODE === 'production') {
+		path = `dist${path}`;
+	}
+
 	const resized = sharp(path).resize(100, 100, {
 		fit: 'inside',
 	});

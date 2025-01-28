@@ -3,7 +3,7 @@ title: 'Generations'
 date: '2019-12-31'
 categories:
     - 'musings'
-coverImage: 'images/b93bd-full_featured_double_rainbow_at_savonlinna_1000px.jpg'
+coverImage: 'images/double-rainbow.jpg'
 coverAlt: 'Landscape with large double rainbow'
 ---
 
