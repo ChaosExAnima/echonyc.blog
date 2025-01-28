@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 
 import Prose from '~/components/Prose.astro';
+import { getThumbhash } from '~/lib/images';
 
 import FormattedDate from '../components/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
@@ -11,36 +12,48 @@ import BaseLayout from './BaseLayout.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { categories = [], coverAlt, coverImage, date, title } = Astro.props;
+const hash = coverImage ? await getThumbhash(coverImage) : '';
 ---
 
-<BaseLayout title={title}>
+<BaseLayout
+	itemid={Astro.url.toString()}
+	itemtype="http://schema.org/BlogPosting"
+>
 	{
 		coverImage && (
-			<div
+			<figure
 				class="fixed top-0 left-0 right-0 -z-10 max-h-screen overflow-hidden flex justify-center"
+				itemprop="associatedMedia"
+				itemscope
+				itemtype="https://schema.org/ImageObject"
 				slot="end"
 			>
 				<Image
 					alt={coverAlt ?? ''}
-					class="image-filter w-screen min-w-80"
+					class="image-filter object-cover object-center w-screen min-w-80 bg-cover text-transparent"
+					data-hash={hash}
+					id="cover-image"
+					itemprop="contentUrl"
 					src={coverImage}
 				/>
-			</div>
+			</figure>
 		)
 	}
 	<Prose
 		aria-labelledby="post-title"
+		as="article"
 		class:list={[
 			'bg-black p-10 rounded-md mb-10',
 			coverImage && 'mt-[20vh]',
 		]}
+		itemprop="articleBody"
 	>
-		<h1 class="mb-0" id="post-title">{title}</h1>
+		<h1 class="mb-0" id="post-title" itemprop="name">{title}</h1>
 		<p class="italic font-light text-base mb-10">
 			<FormattedDate date={date} />
 			{
 				categories.length > 0 && (
-					<span aria-label="Categories">
+					<span aria-label="Categories" itemprop="keywords">
 						&ndash; Filed under:&nbsp;
 						{categories.map((category, index) => (
 							<>
@@ -55,3 +68,24 @@ const { categories = [], coverAlt, coverImage, date, title } = Astro.props;
 		<slot />
 	</Prose>
 </BaseLayout>
+<script>
+	import { thumbHashToDataURL } from 'thumbhash';
+
+	function blurryImage() {
+		const image = document.getElementById('cover-image');
+		if (!(image instanceof HTMLImageElement)) {
+			return;
+		}
+		const hash = image.dataset.hash;
+		if (!hash) {
+			return;
+		}
+
+		const thumbHash = Uint8Array.from(window.atob(hash), (v) =>
+			v.charCodeAt(0),
+		);
+		const dataUrl = thumbHashToDataURL(thumbHash);
+		image.style.backgroundImage = `url(${dataUrl})`;
+	}
+	blurryImage();
+</script>

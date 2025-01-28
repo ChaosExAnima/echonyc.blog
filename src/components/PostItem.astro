@@ -14,13 +14,20 @@ const hash = await (post.data.coverImage
 	: hashFromTitle(post));
 ---
 
-<a aria-labelledby={`post-${post.id}`} href={getPostPath(post)}>
+<a
+	aria-labelledby={`post-${post.id}`}
+	href={getPostPath(post)}
+	itemprop="blogPost"
+	itemscope
+	itemtype="http://schema.org/BlogPosting"
+>
 	{
 		post.data.coverImage && (
 			<Image
 				alt={post.data.coverAlt ?? ''}
 				class="object-cover h-80 image-filter rounded-md w-full bg-cover text-transparent"
 				data-hash={hash}
+				itemprop="associatedMedia"
 				src={post.data.coverImage}
 			/>
 		)
@@ -30,7 +37,11 @@ const hash = await (post.data.coverImage
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
 		)
 	}
-	<h4 class="font-thin text-3xl my-4" id={`post-${post.id}`}>
+	<h4
+		class="font-thin text-3xl my-4"
+		id={`post-${post.id}`}
+		itemprop="headline"
+	>
 		{post.data.title}
 	</h4>
 	<p>

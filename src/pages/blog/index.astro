@@ -7,9 +7,9 @@ import { getPosts } from '~/lib/posts';
 const posts = await getPosts();
 ---
 
-<BaseLayout title="My Writings">
+<BaseLayout aria-labelledby="title">
 	<Prose as="header" class="mt-10 mb-12">
-		<h1>My Writings</h1>
+		<h1 id="title" itemprop="headline">My Writings</h1>
 	</Prose>
 	<PostList posts={posts} />
 </BaseLayout>

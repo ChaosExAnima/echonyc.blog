@@ -1,10 +1,12 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
 import BaseHead from '~/components/BaseHead.astro';
 import Footer from '~/components/Footer.astro';
 import Header from '~/components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
-interface Props {
+interface Props extends HTMLAttributes<'main'> {
 	class?: string;
 	description?: string;
 	title?: string;
@@ -14,6 +16,7 @@ const {
 	class: className = '',
 	description = SITE_DESCRIPTION,
 	title: propTitle,
+	...attributes
 } = Astro.props;
 
 let title = '';
@@ -30,7 +33,13 @@ if (propTitle) {
 	</head>
 	<body class="bg-black text-white text-lg">
 		<Header />
-		<main class:list={['xl:max-w-screen-xl mx-auto px-10', className]}>
+		<main
+			class:list={['xl:max-w-screen-xl mx-auto px-10', className]}
+			itemid={Astro.url.toString()}
+			itemscope
+			itemtype="http://schema.org/Blog"
+			{...attributes}
+		>
 			<slot />
 		</main>
 		<Footer />

@@ -4,7 +4,11 @@ import { SITE_TITLE } from '~/consts';
 const year = new Date().getFullYear();
 ---
 
-<footer aria-label="Site footer" class="bg-black px-10">
+<footer
+	aria-label="Site footer"
+	class="bg-black px-10"
+	itemprop="copyrightNotice"
+>
 	<div class="font-light max-w-screen-2xl mx-auto py-10">
 		{SITE_TITLE}, {year}
 	</div>

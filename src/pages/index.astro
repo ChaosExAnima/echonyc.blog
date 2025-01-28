@@ -11,8 +11,8 @@ const posts = (await getCollection('blog'))
 ---
 
 <BaseLayout>
-	<Prose class="mt-10">
-		<h1>Howdy, I'm Echo!</h1>
+	<Prose as="article" class="mt-10" itemprop="about">
+		<h1 itemprop="headline">Howdy, I'm Echo!</h1>
 		<p>
 			This is my website where I put some of my writings and other
 			personal things. I am a web engineer, Jewish, trans and queer, goth,

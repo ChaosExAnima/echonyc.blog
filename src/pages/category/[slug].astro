@@ -30,9 +30,9 @@ export const getStaticPaths = (async () => {
 const { category, posts } = Astro.props;
 ---
 
-<BaseLayout title={`Posts filed as ${category}`}>
+<BaseLayout aria-labelledby="title">
 	<Prose as="header" class="my-10">
-		<h1>
+		<h1 id="title" itemprop="headline">
 			Posts filed as:
 			<strong class="font-normal capitalize">
 				{category}

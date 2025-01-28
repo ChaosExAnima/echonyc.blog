@@ -6,7 +6,11 @@ interface Props {
 const { date } = Astro.props;
 ---
 
-<time aria-label="Publish date" datetime={date.toISOString()}>
+<time
+	aria-label="Publish date"
+	datetime={date.toISOString()}
+	itemprop="datePublished"
+>
 	{
 		date.toLocaleDateString('en-us', {
 			day: 'numeric',
