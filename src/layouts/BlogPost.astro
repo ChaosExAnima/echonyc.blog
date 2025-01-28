@@ -16,13 +16,14 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 ---
 
 <BaseLayout
-	itemid={Astro.url.toString()}
+	itemref="cover-image author"
 	itemtype="http://schema.org/BlogPosting"
 >
 	{
 		coverImage && (
 			<figure
 				class="fixed top-0 left-0 right-0 -z-10 max-h-screen overflow-hidden flex justify-center"
+				id="cover-image"
 				itemprop="associatedMedia"
 				itemscope
 				itemtype="https://schema.org/ImageObject"
@@ -32,10 +33,10 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 					alt={coverAlt ?? ''}
 					class="image-filter object-cover object-center w-screen min-w-80 bg-cover text-transparent"
 					data-hash={hash}
-					id="cover-image"
 					itemprop="contentUrl"
 					src={coverImage}
 				/>
+				{coverAlt && <meta content={coverAlt} itemprop="description" />}
 			</figure>
 		)
 	}
@@ -53,11 +54,22 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 			<FormattedDate date={date} />
 			{
 				categories.length > 0 && (
-					<span aria-label="Categories" itemprop="keywords">
+					<span aria-label="Categories">
 						&ndash; Filed under:&nbsp;
 						{categories.map((category, index) => (
 							<>
-								<a href={`/category/${category}`}>{category}</a>
+								<span
+									itemprop="keywords"
+									itemscope
+									itemtype="http://schema.org/DefinedTerm"
+								>
+									<a
+										href={`/category/${category}`}
+										itemprop="url"
+									>
+										<span itemprop="name">{category}</span>
+									</a>
+								</span>
 								{index < categories.length - 1 && ', '}
 							</>
 						))}

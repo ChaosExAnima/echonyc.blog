@@ -53,3 +53,8 @@ const { description, image = '/blog-placeholder-1.jpg', title } = Astro.props;
 <meta content={title} property="twitter:title" />
 <meta content={description} property="twitter:description" />
 <meta content={new URL(image, Astro.url)} property="twitter:image" />
+
+<!-- Schema.org -->
+<meta content={title} itemprop="name" />
+<meta content={description} itemprop="description" />
+<meta content={Astro.url} itemprop="url" />

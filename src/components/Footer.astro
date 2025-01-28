@@ -12,4 +12,15 @@ const year = new Date().getFullYear();
 	<div class="font-light max-w-screen-2xl mx-auto py-10">
 		{SITE_TITLE}, {year}
 	</div>
+	<section
+		class="hidden"
+		id="author"
+		itemprop="author"
+		itemscope
+		itemtype="http://schema.org/Person"
+	>
+		<meta content="Echo" itemprop="name" />
+		<meta content="Gender Nebula" itemprop="gender" />
+		{Astro.site && <meta content={Astro.site.toString()} itemprop="url" />}
+	</section>
 </footer>

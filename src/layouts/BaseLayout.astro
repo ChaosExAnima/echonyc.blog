@@ -34,11 +34,12 @@ if (propTitle) {
 	<body class="bg-black text-white text-lg">
 		<Header />
 		<main
+			{...attributes}
 			class:list={['xl:max-w-screen-xl mx-auto px-10', className]}
 			itemid={Astro.url.toString()}
+			itemref="author"
 			itemscope
 			itemtype="http://schema.org/Blog"
-			{...attributes}
 		>
 			<slot />
 		</main>
