@@ -37,13 +37,13 @@ const hash = await (post.data.coverImage
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
 		)
 	}
-	<h4
+	<h3
 		class="font-thin text-3xl my-4"
 		id={`post-${post.id}`}
 		itemprop="headline"
 	>
 		{post.data.title}
-	</h4>
+	</h3>
 	<p>
 		<FormattedDate date={post.data.date} />
 	</p>
