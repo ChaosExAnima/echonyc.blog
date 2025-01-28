@@ -7,8 +7,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	integrations: [mdx(), sitemap(), tailwind()],
 	redirects: {
-		'/my-pronouns': '/blog/2019/01/my-pronouns',
-		'/pronouns': '/blog/2019/01/my-pronouns',
+		'/my-pronouns': '/pronouns',
 	},
 	site: 'https://chaosexanima.github.io',
 });
