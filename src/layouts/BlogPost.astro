@@ -29,17 +29,18 @@ const { categories = [], coverAlt, coverImage, date, title } = Astro.props;
 		)
 	}
 	<Prose
+		aria-labelledby="post-title"
 		class:list={[
 			'bg-black p-10 rounded-md mb-10',
 			coverImage && 'mt-[20vh]',
 		]}
 	>
-		<h1 class="mb-0">{title}</h1>
+		<h1 class="mb-0" id="post-title">{title}</h1>
 		<p class="italic font-light text-base mb-10">
 			<FormattedDate date={date} />
 			{
 				categories.length > 0 && (
-					<span>
+					<span aria-label="Categories">
 						&ndash; Filed under:&nbsp;
 						{categories.map((category, index) => (
 							<>

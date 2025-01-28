@@ -14,7 +14,7 @@ const hash = await (post.data.coverImage
 	: hashFromTitle(post));
 ---
 
-<a href={getPostPath(post)}>
+<a aria-labelledby={`post-${post.id}`} href={getPostPath(post)}>
 	{
 		post.data.coverImage && (
 			<Image
@@ -30,7 +30,9 @@ const hash = await (post.data.coverImage
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
 		)
 	}
-	<h4 class="font-thin text-3xl my-4">{post.data.title}</h4>
+	<h4 class="font-thin text-3xl my-4" id={`post-${post.id}`}>
+		{post.data.title}
+	</h4>
 	<p>
 		<FormattedDate date={post.data.date} />
 	</p>
