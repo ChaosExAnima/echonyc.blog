@@ -1,7 +1,8 @@
 {
 	"name": "echonyc-blog",
 	"type": "module",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"packageManager": "pnpm@9.15.4",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -37,5 +38,8 @@
 		"prettier": "^3.4.2",
 		"prettier-plugin-astro": "^0.14.1",
 		"typescript": "^5.7.3"
+	},
+	"volta": {
+		"node": "22.13.1"
 	}
 }
