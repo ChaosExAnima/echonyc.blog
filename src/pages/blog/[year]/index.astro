@@ -23,7 +23,7 @@ export const getStaticPaths = (async () => {
 const { posts, year } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout title={`Posts from ${year}`}>
 	<Prose as="header" class="my-10">
 		<h1>
 			Posts from: <strong class="font-normal">{year}</strong>
