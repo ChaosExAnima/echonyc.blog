@@ -11,5 +11,5 @@ export default defineConfig({
 		'/my-pronouns': '/blog/2019/01/my-pronouns',
 		'/pronouns': '/blog/2019/01/my-pronouns',
 	},
-	site: 'https://example.com',
+	site: 'https://chaosexanima.github.io',
 });
