@@ -1,11 +1,11 @@
 ---
-title: 'Binaries'
-date: '2020-01-06'
+title: Binaries
+date: 2020-01-06
 categories:
-    - 'musings'
-    - 'queer-theory'
-coverImage: 'images/f348d-pixnio-1952962-3810x2540-1-scaled-1.jpeg'
-coverAlt: 'Image of a pile of USA coins'
+  - musings
+  - queerness
+coverImage: images/f348d-pixnio-1952962-3810x2540-1-scaled-1.jpeg
+coverAlt: Image of a pile of USA coins
 ---
 
 I've been thinking for a while about binaries. Yes, gender binaries plays into that of course, but I think there's so many others that we don't talk about.

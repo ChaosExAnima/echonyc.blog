@@ -1,12 +1,12 @@
 ---
-title: 'Storms'
-date: '2020-07-21'
+title: Storms
+date: 2020-07-21
 categories:
-    - 'musings'
-    - 'queer-theory'
-    - 'transness'
-coverImage: 'images/pexels-photo-39811.jpeg'
-coverAlt: 'Photo of a wet road surrounded by trees on a rainy day'
+  - musings
+  - queerness
+  - transness
+coverImage: images/pexels-photo-39811.jpeg
+coverAlt: Photo of a wet road surrounded by trees on a rainy day
 ---
 
 I've been reading a lot of philosophy lately. Well. I've been *watching* a lot of it... on YouTube.

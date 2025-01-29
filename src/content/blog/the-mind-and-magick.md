@@ -1,13 +1,13 @@
 ---
-title: 'The Mind and Magick'
-date: '2020-07-06'
+title: The Mind and Magick
+date: 2020-07-06
 categories:
-    - 'me'
-    - 'magic'
-    - 'mental-health'
-    - 'spirituality'
-coverImage: 'images/pexels-photo-1236730.jpeg'
-coverAlt: 'Figure with Queen of Hearts card floating in between their hands'
+  - magic
+  - me
+  - medical
+  - spirituality
+coverImage: images/pexels-photo-1236730.jpeg
+coverAlt: Figure with Queen of Hearts card floating in between their hands
 ---
 
 **Content Warning: Mental illness.**
