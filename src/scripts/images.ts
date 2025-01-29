@@ -31,11 +31,10 @@ function imageFadeOnLoad(wrapper: HTMLElement) {
 		return;
 	}
 	image.addEventListener('load', () => {
-		setTimeout(() => {
-			image.classList.remove('opacity-0');
-		}, 200); // Magic number as it doesn't appear to fade in without it.
+		image.classList.add('animate-fade');
 	});
 }
+
 function imagePlaceholder(wrapper: HTMLElement, hash: string) {
 	const [deg, colors] = hash.split('-');
 	const gradient = colors

@@ -37,10 +37,7 @@ const {
 	<AstroImage
 		{...props}
 		alt={alt ?? ''}
-		class:list={[
-			'object-cover object-center transition-opacity opacity-0',
-			className,
-		]}
+		class:list={['object-cover object-center', className]}
 		itemprop="contentUrl"
 		src={src}
 	/>

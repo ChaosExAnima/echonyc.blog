@@ -9,11 +9,20 @@ export default {
 	plugins: [typography],
 	theme: {
 		extend: {
+			animation: {
+				fade: 'fade 0.5s ease-in-out',
+			},
 			fontFamily: {
 				serif: [
 					'Source Serif 4 Variable',
 					...defaultTheme.fontFamily.serif,
 				],
+			},
+			keyframes: {
+				fade: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
 			},
 		},
 	},
