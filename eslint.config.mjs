@@ -18,6 +18,9 @@ const eslintConfig = tseslint.config(
 		},
 	},
 	{
+		files: ['*.mjs'],
+	},
+	{
 		ignores: ['.astro/', 'dist/'],
 	},
 );
