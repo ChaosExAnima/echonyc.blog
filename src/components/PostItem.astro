@@ -27,11 +27,12 @@ const id = `post-${post.id}`;
 		coverImage ? (
 			<Image
 				alt={coverAlt}
-				class="h-80 rounded-md w-full overflow-hidden"
+				class="h-80 w-full"
 				hash={hash}
 				sizes={`(max-width: 767px) 700px, (max-width: 1023px) 450px, 320px, ${coverImage.width}px`}
 				src={coverImage}
 				widths={[320, 450, 700, coverImage.width]}
+				wrapperClass="rounded-md overflow-hidden"
 			/>
 		) : (
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
