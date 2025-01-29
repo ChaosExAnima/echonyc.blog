@@ -9,5 +9,5 @@ export default defineConfig({
 	redirects: {
 		'/my-pronouns': '/pronouns',
 	},
-	site: 'https://chaosexanima.github.io',
+	site: 'https://echonyc.blog',
 });
