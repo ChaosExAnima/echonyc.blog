@@ -1,3 +1,5 @@
+// @ts-check
+
 import typography from '@tailwindcss/typography';
 import defaultTheme from 'tailwindcss/defaultTheme';
 

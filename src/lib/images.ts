@@ -1,13 +1,14 @@
 import type { ComponentProps } from 'astro/types';
+
 import { Image } from 'astro:assets';
-import { rgbaToThumbHash } from 'thumbhash';
 import sharp from 'sharp';
+import { rgbaToThumbHash } from 'thumbhash';
 
 const IMAGES_DIR = '/content/blog/images/';
 
 const imagesAsMetadata = import.meta.glob('../content/blog/images/*', {
-	import: 'default',
 	eager: true,
+	import: 'default',
 });
 
 const imagesAsBuffer = import.meta.glob<Uint8Array>(
@@ -30,24 +31,6 @@ const images = Object.keys(imagesAsMetadata).reduce(
 );
 
 type Src = ComponentProps<typeof Image>['src'];
-
-async function srcToMetadata(src: Src) {
-	const metadata = await src;
-	if (typeof metadata === 'string') {
-		throw new Error('Src is just a string');
-	} else if ('default' in metadata) {
-		return metadata.default;
-	}
-	return metadata;
-}
-
-async function srcToPath(src: Src) {
-	if (typeof src === 'string') {
-		return src;
-	}
-	const metadata = await srcToMetadata(src);
-	return metadata.src;
-}
 
 export async function getImageAsBuffer(src: Src): Promise<Buffer> {
 	const path = await srcToPath(src);
@@ -89,4 +72,22 @@ export async function getThumbhash(src: ComponentProps<typeof Image>['src']) {
 		.toBuffer({ resolveWithObject: true });
 	const hash = rgbaToThumbHash(info.width, info.height, data);
 	return Buffer.from(hash).toString('base64');
+}
+
+async function srcToMetadata(src: Src) {
+	const metadata = await src;
+	if (typeof metadata === 'string') {
+		throw new Error('Src is just a string');
+	} else if ('default' in metadata) {
+		return metadata.default;
+	}
+	return metadata;
+}
+
+async function srcToPath(src: Src) {
+	if (typeof src === 'string') {
+		return src;
+	}
+	const metadata = await srcToMetadata(src);
+	return metadata.src;
 }

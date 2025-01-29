@@ -1,6 +1,5 @@
+import { type CollectionEntry, getCollection } from 'astro:content';
 import crypto from 'node:crypto';
-
-import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'blog'>;
 
@@ -11,14 +10,14 @@ export function getPostParams(post: Post) {
 	const month = String(date.getMonth() + 1).padStart(2, '0');
 
 	return {
-		year,
 		month,
 		slug: post.id,
+		year,
 	};
 }
 
 export function getPostPath(post: Post) {
-	const { year, month, slug } = getPostParams(post);
+	const { month, slug, year } = getPostParams(post);
 	return `/blog/${year}/${month}/${slug}`;
 }
 
