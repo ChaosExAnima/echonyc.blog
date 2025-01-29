@@ -56,9 +56,9 @@ const posts = (await getCollection('blog'))
 		<Prose as="header">
 			<h2 class="flex flex-col sm:flex-row gap-4 items-baseline mb-10">
 				<span id="latest-writings">Latest writings</span>
-				<a class="text-base font-light" href="/blog"
-					>Read more&hellip;</a
-				>
+				<a class="text-base font-light" href="/blog">
+					Read more&hellip;
+				</a>
 			</h2>
 		</Prose>
 		<PostList posts={posts} />
