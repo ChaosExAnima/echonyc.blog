@@ -22,7 +22,7 @@ export const getStaticPaths = (async () => {
 		}
 	}
 	return Object.entries(categoryPosts).map(([category, posts]) => ({
-		params: { slug: category },
+		params: { slug: category.replaceAll(' ', '-') },
 		props: { category, posts },
 	}));
 }) satisfies GetStaticPaths;

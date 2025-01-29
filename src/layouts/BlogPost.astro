@@ -43,33 +43,38 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 		itemprop="articleBody"
 	>
 		<h1 class="mb-0" id="post-title" itemprop="name">{title}</h1>
-		<p class="italic font-light text-base mb-10">
+		<div
+			class="font-light text-base mt-4 mb-10 flex flex-col sm:flex-row sm:gap-1"
+		>
 			<FormattedDate date={date} />
 			{
 				categories.length > 0 && (
-					<span aria-label="Categories">
-						&ndash; Filed under:&nbsp;
-						{categories.map((category, index) => (
-							<>
-								<span
-									itemprop="keywords"
-									itemscope
-									itemtype="http://schema.org/DefinedTerm"
+					<ul
+						aria-label="Categories"
+						class="m-0 p-0 ps-0 list-none sm:flex gap-1"
+					>
+						<span class="hidden sm:block">&ndash; </span>
+						Filed under:
+						{categories.map((category) => (
+							<li
+								class="sm:after:content-[','] last:mr-0 last:after:content-none m-0 p-0 sm:mr-1 flex flex-wrap"
+								itemprop="keywords"
+								itemscope
+								itemtype="http://schema.org/DefinedTerm"
+							>
+								<a
+									class="block"
+									href={`/category/${category.replaceAll(' ', '-')}`}
+									itemprop="url"
 								>
-									<a
-										href={`/category/${category}`}
-										itemprop="url"
-									>
-										<span itemprop="name">{category}</span>
-									</a>
-								</span>
-								{index < categories.length - 1 && ', '}
-							</>
+									<span itemprop="name">{category}</span>
+								</a>
+							</li>
 						))}
-					</span>
+					</ul>
 				)
 			}
-		</p>
+		</div>
 		<slot />
 	</Prose>
 </BaseLayout>

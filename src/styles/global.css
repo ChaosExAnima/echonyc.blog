@@ -1,5 +1,12 @@
 :root {
 	font-family: 'Source Serif 4 Variable', serif;
+
+	/* See: https://piccalil.li/blog/fluid-typography-with-css-clamp/ */
+	--title-size: clamp(
+		theme(fontSize.4xl),
+		calc(1rem + 5vw),
+		theme(fontSize.6xl)
+	);
 }
 
 .image-filter {
