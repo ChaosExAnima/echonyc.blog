@@ -7,6 +7,9 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+	experimental: {
+		responsiveImages: true,
+	},
 	integrations: [mdx(), sitemap(), tailwind()],
 	redirects: {
 		'/my-pronouns': '/pronouns',

@@ -24,11 +24,8 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 				alt={coverAlt ?? ''}
 				class="object-cover object-center w-screen min-w-80"
 				hash={hash}
+				layout="full-width"
 				src={coverImage}
-				wrapperAttrs={{
-					id: 'cover-image',
-					slot: 'end',
-				}}
 				wrapperClass="fixed top-0 left-0 right-0 -z-10 min-h-screen overflow-hidden flex justify-center"
 			/>
 		)

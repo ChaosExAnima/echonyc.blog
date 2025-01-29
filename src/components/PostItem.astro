@@ -4,40 +4,43 @@ import { getPostPath, type Post, postImageHash } from '~/lib/posts';
 import FormattedDate from './FormattedDate.astro';
 import Image from './Image.astro';
 
-type Props = Post;
+type Props = {
+	header: 'h2' | 'h3';
+} & Post;
 const post = Astro.props;
+const Header = post.header;
 
 const hash = await postImageHash(post);
+const { coverAlt = '', coverImage, date, title } = post.data;
+const id = `post-${post.id}`;
 ---
 
 <script src="~/scripts/images.ts"></script>
 <a
-	aria-labelledby={`post-${post.id}`}
+	aria-labelledby={id}
 	href={getPostPath(post)}
 	itemprop="blogPost"
 	itemscope
 	itemtype="http://schema.org/BlogPosting"
 >
 	{
-		post.data.coverImage ? (
+		coverImage ? (
 			<Image
-				alt={post.data.coverAlt ?? ''}
+				alt={coverAlt}
 				class="h-80 rounded-md w-full"
 				hash={hash}
-				src={post.data.coverImage}
+				sizes={`(max-width: 767px) 700px, (max-width: 1023px) 450px, 320px, ${coverImage.width}px`}
+				src={coverImage}
+				widths={[320, 450, 700, coverImage.width]}
 			/>
 		) : (
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
 		)
 	}
-	<h3
-		class="font-thin text-3xl my-4"
-		id={`post-${post.id}`}
-		itemprop="headline"
-	>
-		{post.data.title}
-	</h3>
+	<Header class="font-thin text-3xl my-4" id={id} itemprop="headline">
+		{title}
+	</Header>
 	<p>
-		<FormattedDate date={post.data.date} />
+		<FormattedDate date={date} />
 	</p>
 </a>
