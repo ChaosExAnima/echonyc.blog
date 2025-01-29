@@ -27,7 +27,7 @@ const id = `post-${post.id}`;
 		coverImage ? (
 			<Image
 				alt={coverAlt}
-				class="h-80 rounded-md w-full"
+				class="h-80 rounded-md w-full overflow-hidden"
 				hash={hash}
 				sizes={`(max-width: 767px) 700px, (max-width: 1023px) 450px, 320px, ${coverImage.width}px`}
 				src={coverImage}
