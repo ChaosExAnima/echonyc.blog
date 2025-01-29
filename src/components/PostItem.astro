@@ -1,19 +1,16 @@
 ---
-import { Image } from 'astro:assets';
-
-import { getThumbhash } from '~/lib/images';
-import { getPostPath, hashFromTitle, type Post } from '~/lib/posts';
+import { getPostPath, type Post, postImageHash } from '~/lib/posts';
 
 import FormattedDate from './FormattedDate.astro';
+import Image from './Image.astro';
 
 type Props = Post;
 const post = Astro.props;
 
-const hash = await (post.data.coverImage
-	? getThumbhash(post.data.coverImage)
-	: hashFromTitle(post));
+const hash = await postImageHash(post);
 ---
 
+<script src="~/scripts/images.ts"></script>
 <a
 	aria-labelledby={`post-${post.id}`}
 	href={getPostPath(post)}
@@ -22,18 +19,14 @@ const hash = await (post.data.coverImage
 	itemtype="http://schema.org/BlogPosting"
 >
 	{
-		post.data.coverImage && (
+		post.data.coverImage ? (
 			<Image
 				alt={post.data.coverAlt ?? ''}
-				class="object-cover h-80 image-filter rounded-md w-full bg-cover text-transparent"
-				data-hash={hash}
-				itemprop="associatedMedia"
+				class="h-80 rounded-md w-full"
+				hash={hash}
 				src={post.data.coverImage}
 			/>
-		)
-	}
-	{
-		!post.data.coverImage && (
+		) : (
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
 		)
 	}
@@ -48,37 +41,3 @@ const hash = await (post.data.coverImage
 		<FormattedDate date={post.data.date} />
 	</p>
 </a>
-<script>
-	import { thumbHashToDataURL } from 'thumbhash';
-
-	const elements = document.querySelectorAll<HTMLElement>('[data-hash]');
-
-	for (const element of elements) {
-		const hash = element.dataset.hash;
-		if (!hash) {
-			continue;
-		}
-		if (element instanceof HTMLImageElement) {
-			imageThumbHash(element, hash);
-		} else if (element instanceof HTMLDivElement) {
-			imagePlaceholder(element, hash);
-		}
-	}
-
-	function imagePlaceholder(image: HTMLDivElement, hash: string) {
-		const [deg, colors] = hash.split('-');
-		const gradient = colors
-			.split('')
-			.map((hex) => `#${hex.repeat(3)}`)
-			.join(',');
-		image.style.background = `linear-gradient(${deg}deg, ${gradient})`;
-	}
-
-	function imageThumbHash(image: HTMLImageElement, hash: string) {
-		const thumbHash = Uint8Array.from(window.atob(hash), (v) =>
-			v.charCodeAt(0),
-		);
-		const dataUrl = thumbHashToDataURL(thumbHash);
-		image.style.backgroundImage = `url(${dataUrl})`;
-	}
-</script>

@@ -1,6 +1,8 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import crypto from 'node:crypto';
 
+import { getThumbhash } from './images';
+
 export type Post = CollectionEntry<'blog'>;
 
 export function getPostParams(post: Post) {
@@ -27,8 +29,11 @@ export async function getPosts() {
 	);
 }
 
-export async function hashFromTitle(post: Post) {
-	const { title } = post.data;
+export function postImageHash(post: Post) {
+	const { coverImage, title } = post.data;
+	if (coverImage) {
+		return getThumbhash(coverImage.src);
+	}
 	const hash = crypto.createHash('md5');
 	hash.update(title);
 	const hex = hash.digest().toString('hex');

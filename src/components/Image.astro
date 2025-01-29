@@ -1,0 +1,49 @@
+---
+import type { HTMLAttributes, Polymorphic } from 'astro/types';
+
+import { Image as AstroImage, type LocalImageProps } from 'astro:assets';
+
+// Normally I'd use a type var, but Astro doesn't pick up props if I do it that way.
+type Props = {
+	alt: string | undefined;
+	hash?: string;
+	wrapperAttrs?: Omit<HTMLAttributes<'div' | 'figure'>, 'class'>;
+	wrapperClass?: string;
+} & LocalImageProps &
+	Polymorphic<{ as: 'div' | 'figure' }>;
+
+const {
+	alt,
+	as: Wrapper = 'figure',
+	class: className,
+	hash,
+	itemprop = 'associatedMedia',
+	src,
+	wrapperAttrs = {},
+	wrapperClass,
+	...props
+} = Astro.props;
+---
+
+<script src="~/scripts/images.ts"></script>
+<Wrapper
+	{...wrapperAttrs}
+	class:list={['image-filter bg-cover text-transparent', wrapperClass]}
+	data-hash={hash}
+	itemprop={itemprop}
+	itemscope
+	itemtype="https://schema.org/ImageObject"
+>
+	<AstroImage
+		{...props}
+		alt={alt ?? ''}
+		class:list={[
+			'object-cover object-center transition-opacity opacity-0',
+			className,
+		]}
+		itemprop="contentUrl"
+		src={src}
+	/>
+	{alt && <meta content={alt} itemprop="description" />}
+	<slot />
+</Wrapper>

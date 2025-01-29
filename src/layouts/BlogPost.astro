@@ -1,12 +1,11 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-import { Image } from 'astro:assets';
-
+import FormattedDate from '~/components/FormattedDate.astro';
+import Image from '~/components/Image.astro';
 import Prose from '~/components/Prose.astro';
 import { getThumbhash } from '~/lib/images';
 
-import FormattedDate from '../components/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -21,23 +20,17 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 >
 	{
 		coverImage && (
-			<figure
-				class="fixed top-0 left-0 right-0 -z-10 max-h-screen overflow-hidden flex justify-center"
-				id="cover-image"
-				itemprop="associatedMedia"
-				itemscope
-				itemtype="https://schema.org/ImageObject"
-				slot="end"
-			>
-				<Image
-					alt={coverAlt ?? ''}
-					class="image-filter object-cover object-center w-screen min-w-80 bg-cover text-transparent"
-					data-hash={hash}
-					itemprop="contentUrl"
-					src={coverImage}
-				/>
-				{coverAlt && <meta content={coverAlt} itemprop="description" />}
-			</figure>
+			<Image
+				alt={coverAlt ?? ''}
+				class="object-cover object-center w-screen min-w-80"
+				hash={hash}
+				src={coverImage}
+				wrapperAttrs={{
+					id: 'cover-image',
+					slot: 'end',
+				}}
+				wrapperClass="fixed top-0 left-0 right-0 -z-10 min-h-screen overflow-hidden flex justify-center"
+			/>
 		)
 	}
 	<Prose
@@ -80,24 +73,3 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 		<slot />
 	</Prose>
 </BaseLayout>
-<script>
-	import { thumbHashToDataURL } from 'thumbhash';
-
-	function blurryImage() {
-		const image = document.getElementById('cover-image');
-		if (!(image instanceof HTMLImageElement)) {
-			return;
-		}
-		const hash = image.dataset.hash;
-		if (!hash) {
-			return;
-		}
-
-		const thumbHash = Uint8Array.from(window.atob(hash), (v) =>
-			v.charCodeAt(0),
-		);
-		const dataUrl = thumbHashToDataURL(thumbHash);
-		image.style.backgroundImage = `url(${dataUrl})`;
-	}
-	blurryImage();
-</script>
