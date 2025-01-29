@@ -4,18 +4,19 @@ import { type CollectionEntry } from 'astro:content';
 import PostItem from './PostItem.astro';
 
 interface Props {
+	eagerCount?: number;
 	header?: 'h2' | 'h3';
 	posts: CollectionEntry<'blog'>[];
 }
 
-const { header = 'h2', posts } = Astro.props;
+const { eagerCount = 6, header = 'h2', posts } = Astro.props;
 ---
 
 <ul class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
 	{
-		posts.map((post) => (
+		posts.map((post, index) => (
 			<li>
-				<PostItem {...post} header={header} />
+				<PostItem {...post} header={header} lazy={eagerCount < index} />
 			</li>
 		))
 	}

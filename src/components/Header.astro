@@ -4,24 +4,29 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<div aria-label="Site navigation" class="bg-black px-10">
+<header class="bg-black px-10">
 	<nav
 		class="flex flex-col sm:flex-row gap-4 items-center justify-between max-w-screen-2xl mx-auto py-10"
 	>
 		<div
 			class="text-center sm:text-left hover:text-violet-400 transition-colors"
 		>
-			<a aria-label="Site title" href="/">
-				<h2 class="text-2xl mb-2">{SITE_TITLE}</h2>
-				<h3 class="italic font-light text-base">
+			<a href="/">
+				<h2 aria-label={SITE_TITLE} class="text-2xl mb-2">
+					{SITE_TITLE}
+				</h2>
+				<h3
+					aria-label={SITE_DESCRIPTION}
+					class="italic font-light text-base"
+				>
 					{SITE_DESCRIPTION}
 				</h3>
 			</a>
 		</div>
-		<ol aria-label="Navigation items" class="flex gap-4">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/pronouns">My Pronouns</HeaderLink>
+		<ol class="flex gap-4">
+			<HeaderLink href="/" text="Home" />
+			<HeaderLink href="/blog" text="Blog" />
+			<HeaderLink href="/pronouns" text="My Pronouns" />
 		</ol>
 	</nav>
-</div>
+</header>

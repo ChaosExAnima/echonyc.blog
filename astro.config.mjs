@@ -5,14 +5,16 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
+import pageInsight from 'astro-page-insight';
+
 // https://astro.build/config
 export default defineConfig({
-	experimental: {
-		responsiveImages: true,
-	},
-	integrations: [mdx(), sitemap(), tailwind()],
-	redirects: {
-		'/my-pronouns': '/pronouns',
-	},
-	site: 'https://echonyc.blog',
+    experimental: {
+        responsiveImages: true,
+    },
+    integrations: [mdx(), sitemap(), tailwind(), pageInsight()],
+    redirects: {
+        '/my-pronouns': '/pronouns',
+    },
+    site: 'https://echonyc.blog',
 });

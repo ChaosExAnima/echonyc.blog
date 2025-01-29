@@ -9,5 +9,11 @@ const { caption, src } = Astro.props;
 
 <figure>
 	<audio class="w-full" controls src={src}></audio>
-	{caption && <figcaption class="text-sm text-center">{caption}</figcaption>}
+	{
+		caption && (
+			<figcaption aria-label={caption} class="text-sm text-center">
+				{caption}
+			</figcaption>
+		)
+	}
 </figure>

@@ -6,9 +6,9 @@ import Image from './Image.astro';
 
 type Props = {
 	header: 'h2' | 'h3';
+	lazy?: boolean;
 } & Post;
-const post = Astro.props;
-const Header = post.header;
+const { header: Header, lazy = true, ...post } = Astro.props;
 
 const hash = await postImageHash(post);
 const { coverAlt = '', coverImage, date, title } = post.data;
@@ -17,7 +17,6 @@ const id = `post-${post.id}`;
 
 <script src="~/scripts/images.ts"></script>
 <a
-	aria-labelledby={id}
 	href={getPostPath(post)}
 	itemprop="blogPost"
 	itemscope
@@ -29,6 +28,7 @@ const id = `post-${post.id}`;
 				alt={coverAlt}
 				class="h-80 w-full"
 				hash={hash}
+				loading={lazy ? 'lazy' : 'eager'}
 				sizes={`(max-width: 767px) 700px, (max-width: 1023px) 450px, 320px, ${coverImage.width}px`}
 				src={coverImage}
 				widths={[320, 450, 700, coverImage.width]}
@@ -38,7 +38,12 @@ const id = `post-${post.id}`;
 			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
 		)
 	}
-	<Header class="font-thin text-3xl my-4" id={id} itemprop="headline">
+	<Header
+		aria-label={title}
+		class="font-thin text-3xl my-4"
+		id={id}
+		itemprop="headline"
+	>
 		{title}
 	</Header>
 	<p>

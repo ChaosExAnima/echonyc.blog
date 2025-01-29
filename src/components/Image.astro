@@ -13,7 +13,7 @@ type Props = {
 	Polymorphic<{ as: 'div' | 'figure' }>;
 
 const {
-	alt,
+	alt = '',
 	as: Wrapper = 'figure',
 	class: className,
 	hash,
@@ -36,7 +36,7 @@ const {
 >
 	<AstroImage
 		{...props}
-		alt={alt ?? ''}
+		alt={alt}
 		class:list={['object-cover object-center', className]}
 		itemprop="contentUrl"
 		src={src}

@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-import FormattedDate from '~/components/FormattedDate.astro';
 import Image from '~/components/Image.astro';
+import PostMeta from '~/components/PostMeta.astro';
 import Prose from '~/components/Prose.astro';
 import { getThumbhash } from '~/lib/images';
 
@@ -25,13 +25,13 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 				class="object-cover object-center w-screen min-w-80"
 				hash={hash}
 				layout="full-width"
+				loading="eager"
 				src={coverImage}
 				wrapperClass="fixed top-0 left-0 right-0 -z-10 min-h-screen overflow-hidden flex justify-center"
 			/>
 		)
 	}
 	<Prose
-		aria-labelledby="post-title"
 		as="article"
 		class:list={[
 			'bg-black p-10 rounded-md mb-10',
@@ -39,39 +39,10 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 		]}
 		itemprop="articleBody"
 	>
-		<h1 class="mb-0" id="post-title" itemprop="name">{title}</h1>
-		<div
-			class="font-light text-base mt-4 mb-10 flex flex-col sm:flex-row sm:gap-1"
-		>
-			<FormattedDate date={date} />
-			{
-				categories.length > 0 && (
-					<ul
-						aria-label="Categories"
-						class="m-0 p-0 ps-0 list-none sm:flex gap-1"
-					>
-						<span class="hidden sm:block">&ndash; </span>
-						Filed under:
-						{categories.map((category) => (
-							<li
-								class="sm:after:content-[','] last:mr-0 last:after:content-none m-0 p-0 sm:mr-1 flex flex-wrap"
-								itemprop="keywords"
-								itemscope
-								itemtype="http://schema.org/DefinedTerm"
-							>
-								<a
-									class="block"
-									href={`/category/${category.replaceAll(' ', '-')}`}
-									itemprop="url"
-								>
-									<span itemprop="name">{category}</span>
-								</a>
-							</li>
-						))}
-					</ul>
-				)
-			}
-		</div>
+		<h1 aria-label={title} class="mb-0" id="post-title" itemprop="name">
+			{title}
+		</h1>
+		<PostMeta categories={categories} date={date} />
 		<slot />
 	</Prose>
 </BaseLayout>

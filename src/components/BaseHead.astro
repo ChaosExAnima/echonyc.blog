@@ -53,3 +53,9 @@ const { description, image = '/blog-placeholder-1.jpg', title } = Astro.props;
 <meta content={title} property="twitter:title" />
 <meta content={description} property="twitter:description" />
 <meta content={new URL(image, Astro.url)} property="twitter:image" />
+
+<!-- CloudFlare -->
+<meta
+	content={`sec-ch-dpr ${Astro.site}; sec-ch-viewport-width ${Astro.site}`}
+	http-equiv="Delegate-CH"
+/>
