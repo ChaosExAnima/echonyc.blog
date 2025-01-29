@@ -1,75 +1,81 @@
 {
-	"$schema": "https://frontmatter.codes/frontmatter.schema.json",
-	"frontMatter.framework.id": "astro",
-	"frontMatter.preview.host": "http://localhost:4321",
-	"frontMatter.content.publicFolder": "[[workspace]]/src/content/blog/images",
-	"frontMatter.content.pageFolders": [
-		{
-			"title": "blog",
-			"path": "[[workspace]]/src/content/blog"
-		}
-	],
-	"frontMatter.media.contentTypes": [
-		{
-			"name": "default",
-			"fileTypes": ["png", "jpeg", "jpg"],
-			"fields": [
-				{
-					"title": "Alt text",
-					"name": "alt",
-					"type": "string"
-				}
-			]
-		}
-	],
-	"frontMatter.taxonomy.contentTypes": [
-		{
-			"name": "default",
-			"pageBundle": false,
-			"previewPath": "blog/{{date|yyyy}}/{{date|MM}}",
-			"filePrefix": null,
-			"clearEmpty": true,
-			"fields": [
-				{
-					"title": "Title",
-					"name": "title",
-					"type": "string",
-					"single": true
-				},
-				{
-					"title": "Description",
-					"name": "description",
-					"type": "string"
-				},
-				{
-					"title": "Publishing date",
-					"name": "date",
-					"type": "datetime",
-					"default": "{{now}}",
-					"isPublishDate": true
-				},
-				{
-					"title": "Content preview",
-					"name": "coverImage",
-					"type": "image",
-					"isPreviewImage": true
-				},
-				{
-					"title": "Cover image alt text",
-					"name": "coverAlt",
-					"type": "string"
-				},
-				{
-					"title": "date",
-					"name": "date",
-					"type": "datetime"
-				},
-				{
-					"title": "categories",
-					"name": "categories",
-					"type": "categories"
-				}
-			]
-		}
-	]
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.publicFolder": "[[workspace]]/src/content/blog/images",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "blog",
+      "path": "[[workspace]]/src/content/blog"
+    }
+  ],
+  "frontMatter.media.contentTypes": [
+    {
+      "name": "default",
+      "fileTypes": [
+        "png",
+        "jpeg",
+        "jpg"
+      ],
+      "fields": [
+        {
+          "title": "Alt text",
+          "name": "alt",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": "blog/{{date|yyyy}}/{{date|MM}}",
+      "filePrefix": null,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Publishing date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Content preview",
+          "name": "coverImage",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "title": "Cover image alt text",
+          "name": "coverAlt",
+          "type": "string"
+        },
+        {
+          "title": "date",
+          "name": "date",
+          "type": "datetime"
+        },
+        {
+          "title": "categories",
+          "name": "categories",
+          "type": "categories"
+        }
+      ]
+    }
+  ],
+  "frontMatter.website.host": "https://echonyc.blog",
+  "frontMatter.framework.startCommand": "pnpm dev"
 }

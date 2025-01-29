@@ -1,12 +1,12 @@
 ---
-title: 'The New Governors'
-date: '2022-04-30'
+title: The New Governors
+date: 2022-04-30
 categories:
-    - 'politics'
-    - 'law'
-    - 'social-media'
-coverImage: 'images/pexels-photo-273209.jpeg'
-coverAlt: 'Photo looking up at tall glass buildings'
+  - law
+  - politics
+  - social media
+coverImage: images/pexels-photo-273209.jpeg
+coverAlt: Photo looking up at tall glass buildings
 ---
 
 Wow, it's been a while, huh? I started this blog ages ago, but as the pandemic happened I just... stopped. And that's okay, I think holding myself to an arbitrary standard of posting isn't great for my brain anyway.
