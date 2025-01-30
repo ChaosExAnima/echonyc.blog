@@ -5,6 +5,8 @@ jobs:
   build:
       name: Building sites and running Pa11y tests
       runs-on: ubuntu-latest
+      permissions:
+        pull-requests: write
 
       steps:
         - name: Checkout code
@@ -49,6 +51,7 @@ jobs:
               ${{ steps.pa11y_output.outputs.content }}
               ```
               </details>
+            comment-tag: pa11y
 
         - name: Check for pa11y failures.
           if: ${{ contains(steps.pa11y_output.outputs.content, 'errno 2') }}
