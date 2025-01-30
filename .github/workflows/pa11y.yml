@@ -34,7 +34,7 @@ jobs:
           run: pnpm run preview &
 
         - name: Run a11y tests
-          run: pnpm run a11y 2>&1 | tee pa11y_output.txt
+          run: pnpm run a11y 2>/dev/null | tee pa11y_output.txt
 
         - name: Read pa11y_output file.
           id: pa11y_output
