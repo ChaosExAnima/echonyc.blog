@@ -3,6 +3,11 @@
 		"standard": "WCAG2AA",
 		"runners": [
 			"axe"
-		]
+		],
+		"chromeLaunchConfig": {
+			"args": [
+				"--no-sandbox"
+			]
+		}
 	}
 }
