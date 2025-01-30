@@ -1,4 +1,6 @@
 ---
+import Search from 'astro-pagefind/components/Search';
+
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
 import HeaderLink from './HeaderLink.astro';
@@ -28,5 +30,15 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/blog" text="Blog" />
 			<HeaderLink href="/pronouns" text="My Pronouns" />
 		</ol>
+		<Search
+			className="focus-within:absolute focus-within:left-1/4 focus-within:right-1/4"
+			uiOptions={{ showImages: false }}
+		/>
 	</nav>
 </header>
+
+<style>
+	:root {
+		--pagefind-ui-primary: theme(colors.violet.400);
+	}
+</style>
