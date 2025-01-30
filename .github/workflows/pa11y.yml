@@ -47,9 +47,11 @@ jobs:
           with:
             message: |
               <details><summary>Pa11y testing results</summary>
+
               ```
               ${{ steps.pa11y_output.outputs.content }}
               ```
+
               </details>
             comment-tag: pa11y
 
