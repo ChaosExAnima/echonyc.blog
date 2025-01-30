@@ -31,10 +31,10 @@ if (propTitle) {
 	<head>
 		<BaseHead description={description} title={title} />
 	</head>
-	<body class="bg-black text-white text-lg flex flex-col">
+	<body class="flex flex-col bg-black font-serif text-lg text-white">
 		<main
 			{...attributes}
-			class:list={['xl:max-w-screen-xl mx-auto px-10 order-2', className]}
+			class:list={['order-2 mx-auto px-10 xl:max-w-screen-xl', className]}
 			itemid={Astro.url.toString()}
 			itemref="author"
 			itemscope

@@ -54,7 +54,7 @@ const posts = (await getCollection('blog'))
 	</Prose>
 	<section aria-labelledby="latest-writings" class="mt-10">
 		<Prose as="header">
-			<h2 class="flex flex-col sm:flex-row gap-4 items-baseline mb-10">
+			<h2 class="mb-10 flex flex-col items-baseline gap-4 sm:flex-row">
 				<span id="latest-writings">Latest writings</span>
 				<a class="text-base font-light" href="/blog">
 					Read more&hellip;
@@ -63,7 +63,7 @@ const posts = (await getCollection('blog'))
 		</Prose>
 		<PostList header="h3" posts={posts} />
 		<a
-			class="text-base font-light mt-10 block text-violet-400 hover:text-violet-300 transition-colors underline lg:hidden"
+			class="mt-10 block text-base font-light text-violet-400 underline transition-colors hover:text-violet-300 lg:hidden"
 			href="/blog">Read more&hellip;</a
 		>
 	</section>
