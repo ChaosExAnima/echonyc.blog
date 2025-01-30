@@ -2,9 +2,9 @@
 title: Books n' Things
 date: 2019-03-13
 categories:
-  - books
-  - queerness
-  - transness
+    - books
+    - queerness
+    - transness
 coverImage: images/0f2d7-8314929977_28fd740070_b.jpg
 coverAlt: A pile of books
 ---

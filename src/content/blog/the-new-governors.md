@@ -2,9 +2,9 @@
 title: The New Governors
 date: 2022-04-30
 categories:
-  - law
-  - politics
-  - social media
+    - law
+    - politics
+    - social media
 coverImage: images/pexels-photo-273209.jpeg
 coverAlt: Photo looking up at tall glass buildings
 ---

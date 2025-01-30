@@ -2,8 +2,8 @@
 title: Binaries
 date: 2020-01-06
 categories:
-  - musings
-  - queerness
+    - musings
+    - queerness
 coverImage: images/f348d-pixnio-1952962-3810x2540-1-scaled-1.jpeg
 coverAlt: Image of a pile of USA coins
 ---
