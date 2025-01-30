@@ -27,7 +27,7 @@ jobs:
         - name: Lint the code
           run: pnpm run lint
 
-        - name: Build sites
+        - name: Build site
           run: pnpm run build --site http://localhost:4321
 
         - name: Start preview server
