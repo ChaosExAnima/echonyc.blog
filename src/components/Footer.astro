@@ -2,11 +2,17 @@
 import { SITE_TITLE } from '~/consts';
 
 const year = new Date().getFullYear();
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
 <footer
 	aria-label={`${SITE_TITLE}, ${year}`}
-	class="bg-black px-10"
+	class:list={['bg-black px-10', className]}
 	itemprop="copyrightNotice"
 >
 	<div class="font-light max-w-screen-2xl mx-auto py-10">

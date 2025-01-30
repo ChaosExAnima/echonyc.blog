@@ -8,12 +8,13 @@ const { caption, src } = Astro.props;
 ---
 
 <figure>
-	<audio class="w-full" controls src={src}></audio>
-	{
-		caption && (
-			<figcaption aria-label={caption} class="text-sm text-center">
-				{caption}
-			</figcaption>
-		)
-	}
+	<audio class="w-full" controls src={src}>
+		<track
+			default
+			kind="captions"
+			src={src.replace(/\.\w+$/, '.vtt')}
+			srclang="en"
+		/>
+	</audio>
+	{caption && <figcaption class="text-sm text-center">{caption}</figcaption>}
 </figure>

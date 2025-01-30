@@ -7,7 +7,7 @@ coverImage: 'images/c4791-5439502731_af718d4445_o.jpg'
 coverAlt: 'A red candle on red background'
 ---
 
-I'm currently reading the book [Becoming Dangerous](https://www.goodreads.com/book/show/36555616-becoming-dangerous), an anthology about witchcraft and femmes. There's a few entries there exploring the intersection of femme aesthetic and magick[1](#1), whether the armour of lipstick or the power of color.
+I'm currently reading the book [Becoming Dangerous](https://www.goodreads.com/book/show/36555616-becoming-dangerous), an anthology about witchcraft and femmes. There's a few entries there exploring the intersection of femme aesthetic and magick<sup>[1](#1)</sup>, whether the armour of lipstick or the power of color.
 
 This resonates a lot with me. I [previously](https://echonyc.name/2019/02/fabulous-and-femme/) discussed a bit about how I feel about my femme identity, but one thing I didn't touch on is how it _feels_ to put on makeup or clothing, to walk and talk feeling beautifully queer.
 
@@ -29,4 +29,4 @@ It's scary. The eyes like daggers, the switchblade swish of hips, the razor smil
 
 The takeaway here: Be deliberate. Be bold. If the world is going to stop and look, use that body to change it as you will.
 
-1 - I'm currently in the UK, so I'll write with some of the British spellings as an homage.
+<a name="1"></a>1 - I'm currently in the UK, so I'll write with some of the British spellings as an homage.
