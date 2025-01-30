@@ -1,0 +1,56 @@
+name: pa11y testing
+on: [pull_request]
+
+jobs:
+  build:
+      name: Building sites and running Pa11y tests
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Install PNPM
+          uses: pnpm/action-setup@v4
+
+        - name: Install Node.js
+          uses: actions/setup-node@v4
+          with:
+            cache: 'pnpm'
+
+
+        - name: Install dependencies
+          run: pnpm install
+
+        - name: Build sites
+          run: pnpm run build --site http://localhost:4321
+
+        - name: Start preview server
+          run: pnpm run preview &
+
+        - name: Run a11y tests
+          run: pnpm run a11y 2>&1 | tee pa11y_output.txt
+
+        - name: Read pa11y_output file.
+          id: pa11y_output
+          uses: juliangruber/read-file-action@v1
+          with:
+            path: ./pa11y_output.txt
+
+        - name: Comment on pull request.
+          uses: thollander/actions-comment-pull-request@master
+          with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            message: |
+              <details><summary>Pa11y testing results</summary>
+              ```
+              ${{ steps.pa11y_output.outputs.content }}
+              ```
+              </details>
+
+        - name: Check for pa11y failures.
+          if: ${{ contains(steps.pa11y_output.outputs.content, 'errno 2') }}
+          run: |
+            echo "::error::The site is failing accessibility tests. Please review the comment in the pull request or the pa11y-ci step in the workflow for details."
+            exit 1
+
