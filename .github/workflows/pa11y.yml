@@ -18,9 +18,11 @@ jobs:
           with:
             cache: 'pnpm'
 
-
         - name: Install dependencies
           run: pnpm install
+
+        - name: Lint the code
+          run: pnpm run lint
 
         - name: Build sites
           run: pnpm run build --site http://localhost:4321
