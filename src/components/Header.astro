@@ -2,14 +2,20 @@
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
 import HeaderLink from './HeaderLink.astro';
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
-<header class="bg-black px-10">
+<header class:list={['bg-black px-10', className]}>
 	<nav
 		class="flex flex-col sm:flex-row gap-4 items-center justify-between max-w-screen-2xl mx-auto py-10"
 	>
 		<div
-			class="text-center sm:text-left hover:text-violet-400 transition-colors"
+			class="text-center sm:text-left hover:text-violet-300 transition-colors"
 		>
 			<a href="/">
 				<h2 aria-label={SITE_TITLE} class="text-2xl mb-2">

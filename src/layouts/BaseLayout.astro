@@ -31,11 +31,10 @@ if (propTitle) {
 	<head>
 		<BaseHead description={description} title={title} />
 	</head>
-	<body class="bg-black text-white text-lg">
-		<Header />
+	<body class="bg-black text-white text-lg flex flex-col">
 		<main
 			{...attributes}
-			class:list={['xl:max-w-screen-xl mx-auto px-10', className]}
+			class:list={['xl:max-w-screen-xl mx-auto px-10 order-2', className]}
 			itemid={Astro.url.toString()}
 			itemref="author"
 			itemscope
@@ -43,7 +42,8 @@ if (propTitle) {
 		>
 			<slot />
 		</main>
-		<Footer />
+		<Header class="order-1" />
+		<Footer class="order-3" />
 		<slot name="end" />
 	</body>
 </html>

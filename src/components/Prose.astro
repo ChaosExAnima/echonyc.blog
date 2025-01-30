@@ -10,8 +10,8 @@ const { as: Component = 'article', class: className } = Astro.props;
 <Component
 	class:list={[
 		'prose prose-invert prose-violet prose-xl prose-stone mx-auto',
-		'prose-headings:font-thin hover:prose-a:text-violet-400 prose-a:transition-colors',
-		'prose-h1:text-[length:var(--title-size)]',
+		'prose-headings:font-thin prose-h1:text-[length:var(--title-size)] ',
+		'prose-a:text-violet-400 hover:prose-a:text-violet-300 prose-a:transition-colors',
 		className,
 	]}
 >
