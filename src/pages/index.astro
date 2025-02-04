@@ -7,7 +7,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-	.slice(0, 3);
+	.slice(0, 4);
 ---
 
 <BaseLayout>
@@ -61,7 +61,11 @@ const posts = (await getCollection('blog'))
 				</a>
 			</h2>
 		</Prose>
-		<PostList header="h3" posts={posts} />
+		<PostList
+			header="h3"
+			postClass="last:hidden last:md:max-lg:block"
+			posts={posts}
+		/>
 		<a
 			class="text-base font-light mt-10 block text-violet-400 hover:text-violet-300 transition-colors underline lg:hidden"
 			href="/blog">Read more&hellip;</a

@@ -1,21 +1,29 @@
 ---
-import { type CollectionEntry } from 'astro:content';
+import type { Post } from '~/lib/posts';
 
 import PostItem from './PostItem.astro';
 
 interface Props {
+	class?: string;
 	eagerCount?: number;
 	header?: 'h2' | 'h3';
-	posts: CollectionEntry<'blog'>[];
+	postClass?: string;
+	posts: Post[];
 }
 
-const { eagerCount = 6, header = 'h2', posts } = Astro.props;
+const {
+	class: className,
+	eagerCount = 6,
+	header = 'h2',
+	postClass,
+	posts,
+} = Astro.props;
 ---
 
-<ul class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+<ul class:list={['grid gap-10 md:grid-cols-2 lg:grid-cols-3', className]}>
 	{
 		posts.map((post, index) => (
-			<li>
+			<li class={postClass}>
 				<PostItem {...post} header={header} lazy={eagerCount < index} />
 			</li>
 		))
