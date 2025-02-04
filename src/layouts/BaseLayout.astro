@@ -31,7 +31,9 @@ if (propTitle) {
 	<head>
 		<BaseHead description={description} title={title} />
 	</head>
-	<body class="flex flex-col bg-black font-serif text-lg text-white">
+	<body
+		class="flex flex-col bg-black font-serif font-weight-normal text-lg text-white"
+	>
 		<main
 			{...attributes}
 			class:list={['order-2 mx-auto px-10 xl:max-w-screen-xl', className]}
