@@ -15,10 +15,13 @@ const { class: className } = Astro.props;
 	class:list={['bg-black px-10', className]}
 	itemprop="copyrightNotice"
 >
-	<div class="font-light max-w-screen-2xl mx-auto py-10">
+	<div class="font-light max-w-screen-2xl mx-auto py-10 flex gap-4">
 		{SITE_TITLE}, {year}
+		<a class="hover:text-violet-300 transition-colors" href="/privacy">
+			Privacy Policy
+		</a>
 	</div>
-	<section
+	<div
 		class="hidden"
 		id="author"
 		itemprop="author"
@@ -28,5 +31,5 @@ const { class: className } = Astro.props;
 		<meta content="Echo" itemprop="name" />
 		<meta content="Gender Nebula" itemprop="gender" />
 		{Astro.site && <meta content={Astro.site.toString()} itemprop="url" />}
-	</section>
+	</div>
 </footer>

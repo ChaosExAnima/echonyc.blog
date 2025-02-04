@@ -2,14 +2,15 @@
 import FormattedDate from './FormattedDate.astro';
 
 interface Props {
-	categories: string[];
+	categories?: string[];
 	date: Date;
 }
 
-const { categories, date } = Astro.props;
+const { categories = [], date } = Astro.props;
 ---
 
 <div class="font-light text-base mt-4 mb-10 flex flex-col sm:flex-row sm:gap-1">
+	<slot />
 	<FormattedDate date={date} />
 	{
 		categories.length > 0 && (
