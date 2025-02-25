@@ -5,10 +5,11 @@ import FormattedDate from './FormattedDate.astro';
 import Image from './Image.astro';
 
 type Props = {
+	class?: string;
 	header: 'h2' | 'h3';
 	lazy?: boolean;
 } & Post;
-const { header: Header, lazy = true, ...post } = Astro.props;
+const { class: className, header: Header, lazy = true, ...post } = Astro.props;
 
 const hash = await postImageHash(post);
 const { coverAlt = '', coverImage, date, title } = post.data;
@@ -17,6 +18,7 @@ const id = `post-${post.id}`;
 
 <script src="~/scripts/images.ts"></script>
 <a
+	class={className}
 	href={getPostPath(post)}
 	itemprop="blogPost"
 	itemscope
