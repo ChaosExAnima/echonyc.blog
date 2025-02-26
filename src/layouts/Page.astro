@@ -25,11 +25,7 @@ const { date, description, head, title } = frontMatterSchema.parse(
 ---
 
 <BaseLayout description={description} itemref="author" title={title}>
-	<Prose
-		as="article"
-		class="mb-10 rounded-md bg-black/50 p-10"
-		itemprop="articleBody"
-	>
+	<Prose class="mb-10 rounded-md bg-black/50 p-10" itemprop="articleBody">
 		<h1 class="mb-0" id="post-title" itemprop="headline">
 			{head ?? title}
 		</h1>

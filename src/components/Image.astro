@@ -3,14 +3,15 @@ import type { HTMLAttributes, Polymorphic } from 'astro/types';
 
 import { Image as AstroImage, type LocalImageProps } from 'astro:assets';
 
-// Normally I'd use a type var, but Astro doesn't pick up props if I do it that way.
+type ImageElement = 'div' | 'figure';
+
 type Props = {
 	alt: string | undefined;
 	hash?: string;
-	wrapperAttrs?: Omit<HTMLAttributes<'div' | 'figure'>, 'class'>;
+	wrapperAttrs?: Omit<HTMLAttributes<ImageElement>, 'class'>;
 	wrapperClass?: string;
 } & LocalImageProps &
-	Polymorphic<{ as: 'div' | 'figure' }>;
+	Polymorphic<{ as: ImageElement }>;
 
 const {
 	alt = '',

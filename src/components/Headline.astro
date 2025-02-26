@@ -1,10 +1,9 @@
 ---
-import type { HTMLAttributes, Polymorphic } from 'astro/types';
+import type { Polymorphic } from 'astro/types';
 
-type Props<Tag extends 'h1' | 'h2' | 'h3'> = {
+type Props = {
 	class?: string;
-} & HTMLAttributes<Tag> &
-	Polymorphic<{ as: Tag }>;
+} & Polymorphic<{ as: 'h1' | 'h2' | 'h3' }>;
 const { as: Component = 'h1', class: className, ...attributes } = Astro.props;
 ---
 

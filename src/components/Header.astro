@@ -12,7 +12,7 @@ interface Props {
 const { background = true, class: className } = Astro.props;
 ---
 
-<header class:list={['px-10', background && 'bg-black', className]}>
+<header class:list={['px-10', background && 'bg-black/90', className]}>
 	<nav
 		class="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-4 py-10 sm:flex-row"
 	>

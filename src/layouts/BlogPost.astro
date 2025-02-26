@@ -33,10 +33,9 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 		)
 	}
 	<Prose
-		as="article"
 		class:list={[
 			'mb-10 rounded-md p-10',
-			coverImage && 'mt-[20vh] bg-black',
+			coverImage && 'mt-[20vh] bg-black/90',
 			!coverImage && 'bg-black/20',
 		]}
 		itemprop="articleBody"
