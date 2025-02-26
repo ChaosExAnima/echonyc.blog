@@ -1,0 +1,53 @@
+---
+const starCount = 300;
+function generateBoxShadow() {
+	const width = Math.floor(Math.random() * 100);
+	const height = Math.floor(Math.random() * 100);
+	const hue = Math.floor(Math.random() * 180);
+	const luminance = 75 + Math.floor(Math.random() * 25);
+	return `${width}vw ${height}vh hsl(${hue}, 50%, ${luminance}%)`;
+}
+const boxShadow = Array(starCount)
+	.keys()
+	.reduce<string>(
+		(string) =>
+			string ? `${string}, ${generateBoxShadow()}` : generateBoxShadow(),
+		'',
+	);
+---
+
+<div
+	class="fixed top-0 left-0 h-screen w-full perspective-near"
+	role="presentation"
+>
+	<div class="stars" style={{ boxShadow }}></div>
+</div>
+<style>
+	.stars {
+		--depth: 300px;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 2px;
+		height: 2px;
+		border-radius: 50%;
+		transform-style: preserve-3d;
+		z-index: -1;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			width: inherit;
+			height: inherit;
+			box-shadow: inherit;
+		}
+		&:before {
+			transform: translateZ(calc(var(--depth) * -1));
+		}
+		&:after {
+			transform: translateZ(calc(var(--depth) * -2));
+		}
+	}
+</style>
