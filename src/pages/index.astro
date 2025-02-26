@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 
 import PostList from '~/components/PostList.astro';
 import Prose from '~/components/Prose.astro';
-import StarField from '~/components/StarField.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog'))
@@ -54,14 +53,17 @@ const posts = (await getCollection('blog'))
 		</ul>
 	</Prose>
 	<section aria-labelledby="latest-writings" class="mt-10">
-		<Prose as="header">
-			<h2 class="mb-10 flex flex-col items-baseline gap-4 sm:flex-row">
-				<span id="latest-writings">Latest writings</span>
-				<a class="text-base font-light" href="/blog">
-					Read more&hellip;
-				</a>
-			</h2>
-		</Prose>
+		<h2
+			class="mb-10 flex flex-col items-baseline gap-4 text-4xl font-thin sm:flex-row"
+		>
+			<span id="latest-writings">Latest writings</span>
+			<a
+				class="text-base font-light text-violet-400 underline transition-colors hover:text-violet-300"
+				href="/blog"
+			>
+				Read more&hellip;
+			</a>
+		</h2>
 		<PostList
 			header="h3"
 			postClass="last:hidden last:md:max-lg:block"
@@ -72,5 +74,4 @@ const posts = (await getCollection('blog'))
 			href="/blog">Read more&hellip;</a
 		>
 	</section>
-	<StarField slot="end" />
 </BaseLayout>

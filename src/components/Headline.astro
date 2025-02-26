@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes, Polymorphic } from 'astro/types';
+
+type Props<Tag extends 'h1' | 'h2' | 'h3'> = {
+	class?: string;
+} & HTMLAttributes<Tag> &
+	Polymorphic<{ as: Tag }>;
+const { as: Component = 'h1', class: className, ...attributes } = Astro.props;
+---
+
+<Component
+	itemprop="headline"
+	{...attributes}
+	class:list={['text-title font-thin', className]}
+>
+	<slot />
+</Component>

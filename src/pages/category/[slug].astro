@@ -3,8 +3,8 @@ import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
 import { type CollectionEntry } from 'astro:content';
 
+import Headline from '~/components/Headline.astro';
 import PostList from '~/components/PostList.astro';
-import Prose from '~/components/Prose.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { getPosts } from '~/lib/posts';
 
@@ -31,13 +31,11 @@ const { category, posts } = Astro.props;
 ---
 
 <BaseLayout aria-labelledby="title">
-	<Prose as="header" class="my-10">
-		<h1 id="title" itemprop="headline">
-			Posts filed as:
-			<strong class="font-normal capitalize">
-				{category}
-			</strong>
-		</h1>
-	</Prose>
+	<Headline class="my-10" id="title">
+		Posts filed as:
+		<strong class="font-normal capitalize">
+			{category}
+		</strong>
+	</Headline>
 	<PostList posts={posts} />
 </BaseLayout>

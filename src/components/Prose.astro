@@ -7,6 +7,6 @@ type Props<Tag extends HTMLTag> = {
 const { as: Component = 'article', class: className } = Astro.props;
 ---
 
-<Component class:list={['prose mx-auto max-w-[65ch]', className]}>
+<Component class:list={['prose mx-auto max-w-[65ch] p-10', className]}>
 	<slot />
 </Component>

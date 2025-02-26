@@ -1,25 +1,30 @@
 ---
 import { SITE_TITLE } from '~/consts';
 
+import Link from './Link.astro';
+
 const year = new Date().getFullYear();
 
 interface Props {
+	background?: boolean;
 	class?: string;
 }
 
-const { class: className } = Astro.props;
+const { background = true, class: className } = Astro.props;
 ---
 
 <footer
 	aria-label={`${SITE_TITLE}, ${year}`}
-	class:list={['bg-black px-10', className]}
+	class:list={['px-10', background && 'bg-black', className]}
 	itemprop="copyrightNotice"
 >
 	<div class="mx-auto flex max-w-screen-2xl gap-4 py-10 font-light">
 		{SITE_TITLE}, {year}
-		<a class="transition-colors hover:text-violet-300" href="/privacy">
-			Privacy Policy
-		</a>
+		<Link href="/privacy" text="Privacy Policy" />
+		<Link
+			href="https://github.com/ChaosExAnima/echonyc.blog"
+			text="Source code"
+		/>
 	</div>
 	<div
 		class="hidden"

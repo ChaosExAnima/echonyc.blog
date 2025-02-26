@@ -2,22 +2,22 @@
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
 import HeaderLink from './HeaderLink.astro';
+import Link from './Link.astro';
 
 interface Props {
+	background?: boolean;
 	class?: string;
 }
 
-const { class: className } = Astro.props;
+const { background = true, class: className } = Astro.props;
 ---
 
-<header class:list={['bg-black px-10', className]}>
+<header class:list={['px-10', background && 'bg-black', className]}>
 	<nav
 		class="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-4 py-10 sm:flex-row"
 	>
-		<div
-			class="text-center transition-colors hover:text-violet-300 sm:text-left"
-		>
-			<a href="/">
+		<div class="text-center sm:text-left">
+			<Link href="/">
 				<h2 aria-label={SITE_TITLE} class="mb-2 text-2xl">
 					{SITE_TITLE}
 				</h2>
@@ -27,7 +27,7 @@ const { class: className } = Astro.props;
 				>
 					{SITE_DESCRIPTION}
 				</h3>
-			</a>
+			</Link>
 		</div>
 		<ol class="flex gap-4">
 			<HeaderLink href="/" text="Home" />
