@@ -1,53 +1,23 @@
 ---
-const starCount = 300;
-function generateBoxShadow() {
-	const width = Math.floor(Math.random() * 100);
-	const height = Math.floor(Math.random() * 100);
-	const hue = Math.floor(Math.random() * 180);
-	const luminance = 75 + Math.floor(Math.random() * 25);
-	return `${width}vw ${height}vh hsl(${hue}, 50%, ${luminance}%)`;
-}
-const boxShadow = Array(starCount)
-	.keys()
-	.reduce<string>(
-		(string) =>
-			string ? `${string}, ${generateBoxShadow()}` : generateBoxShadow(),
-		'',
-	);
+
 ---
 
 <div
-	class="fixed top-0 left-0 h-screen w-full perspective-near"
+	class:list={[
+		'pointer-events-none z-[-1]',
+		'fixed top-0 left-0 h-screen w-full',
+		'bg-contain bg-blend-overlay',
+		'opacity-0 transition-opacity duration-200',
+	]}
+	id="stars"
 	role="presentation"
 >
-	<div class="stars" style={{ boxShadow }}></div>
+	<div
+		class:list={[
+			'block h-full w-full bg-gradient-to-tr from-cyan-900/20 via-violet-900/20 to-black/20',
+			'opacity-0 transition-opacity delay-100 duration-200',
+		]}
+	>
+	</div>
 </div>
-<style>
-	.stars {
-		--depth: 300px;
-
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 2px;
-		height: 2px;
-		border-radius: 50%;
-		transform-style: preserve-3d;
-		z-index: -1;
-
-		&:before,
-		&:after {
-			content: '';
-			position: absolute;
-			width: inherit;
-			height: inherit;
-			box-shadow: inherit;
-		}
-		&:before {
-			transform: translateZ(calc(var(--depth) * -1));
-		}
-		&:after {
-			transform: translateZ(calc(var(--depth) * -2));
-		}
-	}
-</style>
+<script src="~/scripts/stars.ts"></script>
