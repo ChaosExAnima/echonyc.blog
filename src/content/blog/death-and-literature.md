@@ -2,10 +2,10 @@
 title: Death and Literature
 date: 2019-01-27
 categories:
-  - books
-  - musings
-  - new york
-  - queerness
+    - books
+    - musings
+    - new york
+    - queerness
 coverImage: images/5c718-gettyimages-465625320.jpg
 coverAlt: Photo from the inside of an empty NYC subway car
 ---

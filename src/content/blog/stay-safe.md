@@ -2,9 +2,9 @@
 title: Stay Safe!
 date: 2020-06-30
 categories:
-  - musings
-  - queerness
-  - transness
+    - musings
+    - queerness
+    - transness
 coverImage: images/4fdb6-pexels-photo-4614160.jpeg
 coverAlt: Photo of Black Lives Matter protestors wearing masks
 ---

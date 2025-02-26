@@ -2,9 +2,9 @@
 title: The Queer and the City
 date: 2019-01-17
 categories:
-  - musings
-  - new york
-  - queerness
+    - musings
+    - new york
+    - queerness
 coverImage: images/e9642-gettyimages-538096543_medium.jpg
 coverAlt: Photo of New York City cityscape during sunset
 ---

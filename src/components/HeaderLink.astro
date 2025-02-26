@@ -1,6 +1,8 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
+import Link from './Link.astro';
+
 type Props = { text: string } & HTMLAttributes<'a'>;
 
 const { class: className, href, text, ...props } = Astro.props;
@@ -9,14 +11,9 @@ const subpath = pathname.match(/[^/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
-<li class="text-xl font-light hover:text-violet-300 transition-colors">
-	<a
-		class:list={[className, { active: isActive }]}
-		href={href}
-		{...props}
-		aria-label={text}
-	>
+<li class="text-xl font-light">
+	<Link class:list={[className, { active: isActive }]} href={href} {...props}>
 		{text}
 		<slot />
-	</a>
+	</Link>
 </li>
