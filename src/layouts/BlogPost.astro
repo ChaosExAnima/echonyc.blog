@@ -17,6 +17,7 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 <BaseLayout
 	itemref="cover-image author"
 	itemtype="http://schema.org/BlogPosting"
+	noStars={!!coverImage}
 >
 	{
 		coverImage && (
@@ -34,8 +35,9 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 	<Prose
 		as="article"
 		class:list={[
-			'mb-10 rounded-md bg-black p-10',
-			coverImage && 'mt-[20vh]',
+			'mb-10 rounded-md p-10',
+			coverImage && 'mt-[20vh] bg-black',
+			!coverImage && 'bg-black/20',
 		]}
 		itemprop="articleBody"
 	>
