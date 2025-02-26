@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
+import Headline from '~/components/Headline.astro';
 import Link from '~/components/Link.astro';
 import PostList from '~/components/PostList.astro';
 import Prose from '~/components/Prose.astro';
@@ -13,7 +14,7 @@ const posts = (await getCollection('blog'))
 
 <BaseLayout>
 	<Prose class="mt-10" itemprop="about">
-		<h1 itemprop="headline">Howdy, I'm Echo!</h1>
+		<Headline>Howdy, I'm Echo!</Headline>
 		<p>
 			This is my website where I put some of my writings and other
 			personal things. I am a web engineer, Jewish, trans and queer, goth,

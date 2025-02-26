@@ -13,7 +13,103 @@ const {
 
 <Component
 	{...attributes}
-	class:list={['prose mx-auto max-w-[65ch] p-10', className]}
+	class:list={[
+		'prose mx-auto max-w-[65ch] p-10',
+		'text-xl text-stone-300',
+		className,
+	]}
 >
 	<slot />
 </Component>
+<style>
+	.prose {
+		> :where(*:not([class*='mb-']):not([class*='mt-'])),
+		p {
+			margin-top: 1.2em;
+			margin-bottom: 1.2em;
+			line-height: var(--text-base--line-height);
+		}
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			color: var(--color-white);
+			font-weight: 100;
+		}
+
+		h1 {
+			font-size: var(--text-title);
+			line-height: 1;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		h2 {
+			font-size: var(--text-4xl);
+			line-height: var(--text-4xl--line-height);
+			margin-top: calc(var(--spacing) * 12);
+			margin-bottom: calc(var(--spacing) * 8);
+		}
+
+		h3 {
+			font-size: var(--text-3xl);
+			line-height: var(--text-3xl--line-height);
+			margin-top: 1.6em;
+		}
+
+		a {
+			color: var(--color-violet-400);
+			text-decoration: underline;
+			cursor: pointer;
+			transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+			&:hover {
+				color: var(--color-violet-200);
+			}
+		}
+
+		ul,
+		ol {
+			padding-inline-start: 1.6em;
+		}
+		ul {
+			list-style-type: disc;
+		}
+		ol {
+			list-style-type: decimal;
+		}
+		> :is(ul, ol) > li {
+			padding-inline-start: 0.4em;
+			margin: 0.6em 0;
+
+			&::marker {
+				color: var(--color-stone-600);
+			}
+		}
+
+		blockquote {
+			color: var(--color-stone-50)
+			padding-inline-start: 1em;
+			margin: 1.6em 0;
+			border-inline-start-width: var(--spacing);
+			border-inline-start-color: var(--color-stone-600);
+			font-weight: 500;
+			font-style: italic;
+			quotes: '“' '”' '‘' '’';
+		}
+
+		figcaption {
+			color: var(--color-stone-400);
+			font-size: var(--text-lg);
+			font-style: italic;
+		}
+
+		> :first-child {
+			margin-top: 0;
+		}
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+</style>
