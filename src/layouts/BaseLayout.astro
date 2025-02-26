@@ -4,17 +4,20 @@ import type { HTMLAttributes } from 'astro/types';
 import BaseHead from '~/components/BaseHead.astro';
 import Footer from '~/components/Footer.astro';
 import Header from '~/components/Header.astro';
+import StarField from '~/components/StarField.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
 interface Props extends HTMLAttributes<'main'> {
 	class?: string;
 	description?: string;
+	noStars?: boolean;
 	title?: string;
 }
 
 const {
 	class: className = '',
 	description = SITE_DESCRIPTION,
+	noStars = false,
 	title: propTitle,
 	...attributes
 } = Astro.props;
@@ -32,7 +35,7 @@ if (propTitle) {
 		<BaseHead description={description} title={title} />
 	</head>
 	<body
-		class="flex flex-col bg-black font-serif font-weight-normal text-lg text-white"
+		class="font-weight-normal flex flex-col bg-black font-serif text-lg text-white"
 	>
 		<main
 			{...attributes}
@@ -44,8 +47,9 @@ if (propTitle) {
 		>
 			<slot />
 		</main>
-		<Header class="order-1" />
-		<Footer class="order-3" />
+		<Header background={noStars} class="order-1" />
+		<Footer background={noStars} class="order-3" />
 		<slot name="end" />
+		{!noStars && <StarField />}
 	</body>
 </html>
