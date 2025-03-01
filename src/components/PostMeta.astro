@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import Link from './Link.astro';
 
 interface Props {
 	categories?: string[];
@@ -11,7 +12,9 @@ const { categories = [], date } = Astro.props;
 
 <div class="mt-4 mb-10 flex flex-col text-base font-light sm:flex-row sm:gap-1">
 	<slot />
-	<FormattedDate date={date} />
+	<Link href={`/blog/${date.getFullYear()}`}>
+		<FormattedDate date={date} />
+	</Link>
 	{
 		categories.length > 0 && (
 			<>
