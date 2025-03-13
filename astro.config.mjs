@@ -1,3 +1,4 @@
+/* global process */
 // @ts-check
 
 import mdx from '@astrojs/mdx';
@@ -15,7 +16,11 @@ export default defineConfig({
 	redirects: {
 		'/my-pronouns': '/pronouns',
 	},
-	site: 'https://echonyc.blog',
+	site:
+		process.env.CF_PAGES_URL ??
+		(process.env.NODE_ENV === 'development'
+			? 'http://localhost:4321'
+			: 'https://echonyc.blog'),
 	vite: {
 		plugins: [tailwindcss()],
 	},

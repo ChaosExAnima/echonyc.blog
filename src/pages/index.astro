@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import Link from '~/components/Link.astro';
 import PostList from '~/components/PostList.astro';
 import Prose from '~/components/Prose.astro';
+import { SOCIAL_LINKS } from '~/consts';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog'))
@@ -22,35 +23,15 @@ const posts = (await getCollection('blog'))
 		</p>
 		<p>Feel free to browse around or look me up on various social media:</p>
 		<ul>
-			<li>
-				<a href="https://github.com/ChaosExAnima" rel="me noreferrer">
-					GitHub
-				</a>
-			</li>
-			<li>
-				<a
-					href="https://bsky.app/profile/echo.ishella.gay"
-					rel="me noreferrer"
-				>
-					Bluesky
-				</a>
-			</li>
-			<li>
-				<a href="https://tech.lgbt/@chaosexanima" rel="me noreferrer">
-					Mastodon
-				</a>
-			</li>
-			<li>
-				<a
-					href="https://instagram.com/chaosexanima"
-					rel="me noreferrer"
-				>
-					Instagram
-				</a>
-			</li>
-			<li>
-				<a href="https://echo.tumblr.com" rel="me noreferrer">Tumblr</a>
-			</li>
+			{
+				SOCIAL_LINKS.map(({ name, url }) => (
+					<li>
+						<a href={url} rel="me noreferrer">
+							{name}
+						</a>
+					</li>
+				))
+			}
 		</ul>
 	</Prose>
 	<section aria-labelledby="latest-writings" class="mt-10">
