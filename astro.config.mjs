@@ -7,6 +7,17 @@ import tailwindcss from '@tailwindcss/vite';
 import pageInsight from 'astro-page-insight';
 import { defineConfig } from 'astro/config';
 
+function getSite() {
+	const { CF_PAGES_BRANCH, CF_PAGES_URL, NODE_ENV } = process.env;
+	if (NODE_ENV === 'development') {
+		return 'http://localhost:4321';
+	}
+	if (CF_PAGES_URL && CF_PAGES_BRANCH !== 'main') {
+		return CF_PAGES_URL;
+	}
+	return 'https://echonyc.blog';
+}
+
 // https://astro.build/config
 export default defineConfig({
 	experimental: {
@@ -16,11 +27,7 @@ export default defineConfig({
 	redirects: {
 		'/my-pronouns': '/pronouns',
 	},
-	site:
-		process.env.CF_PAGES_URL ??
-		(process.env.NODE_ENV === 'development'
-			? 'http://localhost:4321'
-			: 'https://echonyc.blog'),
+	site: getSite(),
 	vite: {
 		plugins: [tailwindcss()],
 	},
