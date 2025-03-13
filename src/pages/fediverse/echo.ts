@@ -55,12 +55,12 @@ interface ActorMedia {
 	url: string;
 }
 
-function formatAttachment({ name, url }: SocialLink): ActorAttachment {
+function formatAttachment({ name, text, url }: SocialLink): ActorAttachment {
 	const urlWithoutProtocol = url.replace(/^https?:\/\//, '');
 	return {
 		name,
 		type: 'PropertyValue',
-		value: `<a href="https://${urlWithoutProtocol}" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span>${urlWithoutProtocol}</span></a>`,
+		value: `<a href="https://${urlWithoutProtocol}" target="_blank" rel="nofollow noopener noreferrer me" translate="no">${text ?? urlWithoutProtocol}</a>`,
 	};
 }
 

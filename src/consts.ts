@@ -5,13 +5,15 @@ export const FEDI_USER = 'https://tech.lgbt/users/chaosexanima';
 
 export interface SocialLink {
 	name: string;
+	text?: string;
 	url: string;
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [
-	{ name: 'Mastodon', url: FEDI_USER },
+	{ name: 'Mastodon', text: '@chaosexanima@tech.lgbt', url: FEDI_USER },
 	{
 		name: 'GitHub',
+		text: 'ChaosExAnima',
 		url: 'https://github.com/ChaosExAnima',
 	},
 	{
@@ -20,6 +22,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 	},
 	{
 		name: 'Bluesky',
+		text: '@echo.ishella.gay',
 		url: 'https://bsky.app/profile/echo.ishella.gay',
 	},
 ];
