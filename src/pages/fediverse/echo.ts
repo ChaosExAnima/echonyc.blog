@@ -1,5 +1,8 @@
 import type { APIRoute } from 'astro';
 
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
 import { FEDI_USER, SITE_DESCRIPTION, SITE_TITLE, USERNAME } from '~/consts';
 import {
 	type ActivityStream,
@@ -45,17 +48,7 @@ interface ActorMedia {
 	url: string;
 }
 
-const KEY = `-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqSPPSwVnf88P6bdMKQoj
-sGe9yEFfwFwx410ZbLojrSoQSDw6vuK7GvyRPJUr+OAFo6I7Z4DMmLKHWcwkY7gK
-CJAZw9n04AHFZFfPEhBouXrIvKACpft3LpNOmHhp3PAjW58JxsKsRKq4iUf0KBV9
-uR6XGu7ImHetnoa+KhYJmAfRY13vT3BTDltOtz2vCP4R6lgl+rgZ+GWIW+3iJpGP
-VK3UalkB3eegviWscBMjMuSlPQ6xwoGMkgE5tc4CXDWFtMzb56p7u5rNEDUqZsot
-yAStyRYnHvKfYGSAvTsQLr6SjA3g2bus7pE+wfGc2RtpU2BC2g6/f4NL1vEPA1nb
-bwIDAQAB
------END PUBLIC KEY-----`;
-
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = async ({ site }) => {
 	const siteUrl = site ?? new URL('http://localhost:4321');
 	const host = trimTrailingSlash(siteUrl);
 	const avatar: ActorMedia = {
@@ -63,6 +56,12 @@ export const GET: APIRoute = ({ site }) => {
 		type: 'Image',
 		url: `${host}/favicon.svg`,
 	};
+
+	const key = await fs.readFile(
+		path.resolve('src/pages/fediverse', '_public.pem'),
+		'utf-8',
+	);
+
 	const body: Actor = {
 		'@context': ActivityStreamContext,
 		attachments: [
@@ -88,7 +87,7 @@ export const GET: APIRoute = ({ site }) => {
 			'@type': 'Key',
 			id: `${host}/fediverse/${USERNAME}#main-key`,
 			owner: `${host}/fediverse/${USERNAME}`,
-			publicKeyPem: KEY,
+			publicKeyPem: key,
 		},
 		published: new Date(2020, 0, 1).toISOString(),
 		summary: SITE_DESCRIPTION,

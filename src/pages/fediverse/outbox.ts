@@ -9,6 +9,12 @@ import {
 	trimTrailingSlash,
 } from '~/lib/urls';
 
+interface Attachments {
+	blurhash?: string;
+	summary?: string;
+	url: string;
+}
+
 interface Hashtag {
 	href: string;
 	name: string;
@@ -23,6 +29,7 @@ interface Outbox extends ActivityStream {
 }
 
 interface OutboxArticle extends ActivityStream {
+	attachments: Attachments[];
 	attributedTo: string;
 	content: string;
 	hash?: string;
@@ -48,29 +55,39 @@ export const GET: APIRoute = async ({ site }) => {
 	const body: Outbox = {
 		'@context': ActivityStreamContext,
 		id: `${host}/outbox`,
-		orderedItems: posts.map((post) => ({
-			'@context': ActivityStreamContext,
-			actor: `${host}/fediverse/echo`,
-			id: `${host}/blog/${post.id}#create`,
-			object: {
+		orderedItems: posts
+			.toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime())
+			.map((post) => ({
 				'@context': ActivityStreamContext,
-				attributedTo: `${host}/fediverse/echo`,
-				content: post.rendered?.html ?? '',
-				id: `${host}/blog/${post.id}`,
+				actor: `${host}/fediverse/echo`,
+				id: `${host}/blog/${post.id}#create`,
+				object: {
+					'@context': ActivityStreamContext,
+					attachments: post.data.coverImage
+						? [
+								{
+									summary: post.data.coverAlt,
+									url: post.data.coverImage.src,
+								},
+							]
+						: [],
+					attributedTo: `${host}/fediverse/echo`,
+					content: post.rendered?.html ?? '',
+					id: `${host}/blog/${post.id}`,
+					published: post.data.date.toISOString(),
+					tags: (post.data.categories ?? []).map((tag) => ({
+						href: `${host}/category/${tag}`,
+						name: `#${tag}`,
+						type: 'Hashtag',
+					})),
+					title: post.data.title,
+					type: 'Article',
+					url: `${host}/blog/${post.id}`,
+				},
 				published: post.data.date.toISOString(),
-				tags: (post.data.categories ?? []).map((tag) => ({
-					href: `${host}/category/${tag}`,
-					name: `#${tag}`,
-					type: 'Hashtag',
-				})),
-				title: post.data.title,
-				type: 'Article',
-				url: `${host}/blog/${post.id}`,
-			},
-			published: post.data.date.toISOString(),
-			to: ['https://www.w3.org/ns/activitystreams#Public'],
-			type: 'Create',
-		})),
+				to: ['https://www.w3.org/ns/activitystreams#Public'],
+				type: 'Create',
+			})),
 		summary: SITE_DESCRIPTION,
 		totalItems: posts.length,
 		type: 'OrderedCollection',
