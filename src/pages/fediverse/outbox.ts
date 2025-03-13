@@ -51,12 +51,12 @@ export const GET: APIRoute = async ({ site }) => {
 		items: posts.map((post) => ({
 			'@context': ActivityStreamContext,
 			actor: `${host}/fediverse/echo`,
-			id: `${post.id}#create`,
+			id: `${host}/blog/${post.id}#create`,
 			object: {
 				'@context': ActivityStreamContext,
 				attributedTo: `${host}/fediverse/echo`,
 				content: post.rendered?.html ?? '',
-				id: post.id,
+				id: `${host}/blog/${post.id}`,
 				published: post.data.date.toISOString(),
 				tags: (post.data.categories ?? []).map((tag) => ({
 					href: `${host}/category/${tag}`,
@@ -65,7 +65,7 @@ export const GET: APIRoute = async ({ site }) => {
 				})),
 				title: post.data.title,
 				type: 'Note',
-				url: post.id,
+				url: `${host}/blog/${post.id}`,
 			},
 			published: post.data.date.toISOString(),
 			to: ['https://www.w3.org/ns/activitystreams#Public'],
