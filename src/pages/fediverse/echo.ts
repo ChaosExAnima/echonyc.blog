@@ -48,6 +48,14 @@ interface ActorMedia {
 	url: string;
 }
 
+function formatAttachment(name: string, url: string): ActorAttachment {
+	return {
+		name,
+		type: 'PropertyValue',
+		value: `<a href="${url}" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span>maho.dev</span></a>`,
+	};
+}
+
 export const GET: APIRoute = async ({ site }) => {
 	const siteUrl = site ?? new URL('http://localhost:4321');
 	const host = trimTrailingSlash(siteUrl);
@@ -65,12 +73,9 @@ export const GET: APIRoute = async ({ site }) => {
 	const body: Actor = {
 		'@context': ActivityStreamContext,
 		attachments: [
-			{ name: 'blog', type: 'PropertyValue', value: host },
-			{
-				name: 'GitHub',
-				type: 'PropertyValue',
-				value: 'https://github.com/ChaosExAnima',
-			},
+			formatAttachment('Blog', host),
+			formatAttachment('GitHub', 'https://github.com/ChaosExAnima'),
+			formatAttachment('Mastodon', FEDI_USER),
 		],
 		discoverable: true,
 		followers: `${FEDI_USER}/followers`,
