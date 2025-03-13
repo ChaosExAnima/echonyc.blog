@@ -1,22 +1,25 @@
 import type { APIRoute } from 'astro';
 
 import { FEDI_USER, SITE_DESCRIPTION, SITE_TITLE, USERNAME } from '~/consts';
-import { trimTrailingSlash } from '~/lib/urls';
+import {
+	type ActivityStream,
+	ActivityStreamContext,
+	trimTrailingSlash,
+} from '~/lib/urls';
 
-interface Actor {
-	'@context': 'https://www.w3.org/ns/activitystreams';
+interface Actor extends ActivityStream {
 	attachments: ActorAttachment[];
 	discoverable?: boolean;
 	followers: string;
 	following: string;
 	icon: ActorMedia;
-	id: string;
 	image: ActorMedia;
 	inbox: string;
 	name: string;
 	outbox: string;
 	preferredUsername: string;
 	publicKey: ActorKey;
+	published: string;
 	summary: string;
 	type: 'Person';
 	url: string;
@@ -61,8 +64,15 @@ export const GET: APIRoute = ({ site }) => {
 		url: `${host}/favicon.svg`,
 	};
 	const body: Actor = {
-		'@context': 'https://www.w3.org/ns/activitystreams',
-		attachments: [],
+		'@context': ActivityStreamContext,
+		attachments: [
+			{ name: 'blog', type: 'PropertyValue', value: host },
+			{
+				name: 'GitHub',
+				type: 'PropertyValue',
+				value: 'https://github.com/ChaosExAnima',
+			},
+		],
 		discoverable: true,
 		followers: `${FEDI_USER}/followers`,
 		following: `${FEDI_USER}/following`,
@@ -71,7 +81,7 @@ export const GET: APIRoute = ({ site }) => {
 		image: avatar,
 		inbox: `${FEDI_USER}/inbox`,
 		name: SITE_TITLE,
-		outbox: '',
+		outbox: `${host}/fediverse/outbox`,
 		preferredUsername: USERNAME,
 		publicKey: {
 			'@context': 'https://w3id.org/security/v1',
@@ -80,6 +90,7 @@ export const GET: APIRoute = ({ site }) => {
 			owner: `${host}/fediverse/${USERNAME}`,
 			publicKeyPem: KEY,
 		},
+		published: new Date(2020, 0, 1).toISOString(),
 		summary: SITE_DESCRIPTION,
 		type: 'Person',
 		url: host,
