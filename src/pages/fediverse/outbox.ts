@@ -3,6 +3,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
 import { SITE_DESCRIPTION } from '~/consts';
+import { getPostPath, type Post } from '~/lib/posts';
 import {
 	type ActivityStream,
 	ActivityStreamContext,
@@ -35,6 +36,7 @@ interface OutboxArticle extends ActivityStream {
 	hash?: string;
 	published: string;
 	tags: Hashtag[];
+	title: string;
 	type: 'Article';
 	url: string;
 }
@@ -57,37 +59,7 @@ export const GET: APIRoute = async ({ site }) => {
 		id: `${host}/outbox`,
 		orderedItems: posts
 			.toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime())
-			.map((post) => ({
-				'@context': ActivityStreamContext,
-				actor: `${host}/fediverse/echo`,
-				id: `${host}/blog/${post.id}#create`,
-				object: {
-					'@context': ActivityStreamContext,
-					attachments: post.data.coverImage
-						? [
-								{
-									summary: post.data.coverAlt,
-									url: post.data.coverImage.src,
-								},
-							]
-						: [],
-					attributedTo: `${host}/fediverse/echo`,
-					content: post.rendered?.html ?? '',
-					id: `${host}/blog/${post.id}`,
-					published: post.data.date.toISOString(),
-					tags: (post.data.categories ?? []).map((tag) => ({
-						href: `${host}/category/${tag}`,
-						name: `#${tag}`,
-						type: 'Hashtag',
-					})),
-					title: post.data.title,
-					type: 'Article',
-					url: `${host}/blog/${post.id}`,
-				},
-				published: post.data.date.toISOString(),
-				to: ['https://www.w3.org/ns/activitystreams#Public'],
-				type: 'Create',
-			})),
+			.map((post) => postToArticle(post, host)),
 		summary: SITE_DESCRIPTION,
 		totalItems: posts.length,
 		type: 'OrderedCollection',
@@ -96,3 +68,38 @@ export const GET: APIRoute = async ({ site }) => {
 		headers: { 'Content-Type': 'application/activity+json' },
 	});
 };
+
+function postToArticle(post: Post, host: string): OutboxItem {
+	const permalink = `${host}${getPostPath(post)}`;
+	return {
+		'@context': ActivityStreamContext,
+		actor: `${host}/fediverse/echo`,
+		id: `${permalink}#create`,
+		object: {
+			'@context': ActivityStreamContext,
+			attachments: post.data.coverImage
+				? [
+						{
+							summary: post.data.coverAlt,
+							url: post.data.coverImage.src,
+						},
+					]
+				: [],
+			attributedTo: `${host}/fediverse/echo`,
+			content: post.rendered?.html ?? '',
+			id: permalink,
+			published: post.data.date.toISOString(),
+			tags: (post.data.categories ?? []).map((tag) => ({
+				href: `${host}/category/${tag.toLowerCase().replaceAll(/[^a-z]+/g, '-')}`,
+				name: `#${tag}`,
+				type: 'Hashtag',
+			})),
+			title: post.data.title,
+			type: 'Article',
+			url: permalink,
+		},
+		published: post.data.date.toISOString(),
+		to: [`${ActivityStreamContext}#Public`],
+		type: 'Create',
+	};
+}
