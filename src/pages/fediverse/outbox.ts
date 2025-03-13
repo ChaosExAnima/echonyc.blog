@@ -22,22 +22,22 @@ interface Outbox extends ActivityStream {
 	type: 'OrderedCollection';
 }
 
-interface OutboxItem extends ActivityStream {
-	actor: string;
-	object: OutboxNote;
-	published: string;
-	to: string[];
-	type: 'Create';
-}
-
-interface OutboxNote extends ActivityStream {
+interface OutboxArticle extends ActivityStream {
 	attributedTo: string;
 	content: string;
 	hash?: string;
 	published: string;
 	tags: Hashtag[];
-	type: 'Note';
+	type: 'Article';
 	url: string;
+}
+
+interface OutboxItem extends ActivityStream {
+	actor: string;
+	object: OutboxArticle;
+	published: string;
+	to: string[];
+	type: 'Create';
 }
 
 export const GET: APIRoute = async ({ site }) => {
@@ -64,7 +64,7 @@ export const GET: APIRoute = async ({ site }) => {
 					type: 'Hashtag',
 				})),
 				title: post.data.title,
-				type: 'Note',
+				type: 'Article',
 				url: `${host}/blog/${post.id}`,
 			},
 			published: post.data.date.toISOString(),
