@@ -100,7 +100,7 @@ export const GET: APIRoute = async ({ site }) => {
 		published: new Date(2020, 0, 1).toISOString(),
 		summary: SITE_DESCRIPTION,
 		type: 'Person',
-		url: host,
+		url: siteUrl.toString(),
 	};
 	return new Response(JSON.stringify(body), {
 		headers: { 'Content-Type': 'application/activity+json' },
