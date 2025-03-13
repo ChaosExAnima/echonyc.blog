@@ -23,7 +23,7 @@ interface Actor extends ActivityStream {
 	followers: string;
 	following: string;
 	icon: ActorMedia;
-	image: ActorMedia;
+	image?: ActorMedia;
 	inbox: string;
 	name: string;
 	outbox: string;
@@ -86,7 +86,6 @@ export const GET: APIRoute = async ({ site }) => {
 		following: `${FEDI_USER}/following`,
 		icon: avatar,
 		id: `${host}/fediverse/${USERNAME}`,
-		image: avatar,
 		inbox: `${FEDI_USER}/inbox`,
 		name: SITE_TITLE,
 		outbox: `${host}/fediverse/outbox`,
