@@ -16,7 +16,7 @@ interface Hashtag {
 }
 
 interface Outbox extends ActivityStream {
-	items: OutboxItem[];
+	orderedItems: OutboxItem[];
 	summary: string;
 	totalItems: number;
 	type: 'OrderedCollection';
@@ -48,7 +48,7 @@ export const GET: APIRoute = async ({ site }) => {
 	const body: Outbox = {
 		'@context': ActivityStreamContext,
 		id: `${host}/outbox`,
-		items: posts.map((post) => ({
+		orderedItems: posts.map((post) => ({
 			'@context': ActivityStreamContext,
 			actor: `${host}/fediverse/echo`,
 			id: `${host}/blog/${post.id}#create`,
