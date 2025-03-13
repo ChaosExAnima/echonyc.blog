@@ -11,7 +11,7 @@ import {
 } from '~/lib/urls';
 
 interface Actor extends ActivityStream {
-	attachments: ActorAttachment[];
+	attachment: ActorAttachment[];
 	discoverable?: boolean;
 	followers: string;
 	following: string;
@@ -72,7 +72,7 @@ export const GET: APIRoute = async ({ site }) => {
 
 	const body: Actor = {
 		'@context': ActivityStreamContext,
-		attachments: [
+		attachment: [
 			formatAttachment('Blog', host),
 			formatAttachment('GitHub', 'https://github.com/ChaosExAnima'),
 			formatAttachment('Mastodon', FEDI_USER),
