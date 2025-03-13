@@ -5,8 +5,11 @@ async function renderStars() {
 		throw new Error('Stars element not found');
 	}
 
-	const size = 1000;
-	const canvas = new OffscreenCanvas(size, size);
+	const widthMultiplier = 10;
+	const canvas = new OffscreenCanvas(
+		screen.availWidth * widthMultiplier,
+		document.body.scrollHeight,
+	);
 
 	const context = canvas.getContext('2d');
 
@@ -14,7 +17,7 @@ async function renderStars() {
 		throw new Error('2d context not supported');
 	}
 
-	const starCount = 300;
+	const starCount = 300 * widthMultiplier;
 	const maxSize = 2;
 
 	for (let i = 0; i < starCount; i++) {
@@ -35,9 +38,6 @@ async function renderStars() {
 
 	stars.style.backgroundImage = `url(${url})`;
 	stars.classList.remove('opacity-0');
-	Array.from(stars.children).forEach((child) =>
-		child.classList.remove('opacity-0'),
-	);
 }
 
 renderStars();

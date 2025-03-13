@@ -1,0 +1,18 @@
+---
+import styles from './styles.module.css';
+---
+
+<div
+	class:list={[styles.stars, 'opacity-0 motion-reduce:opacity-100']}
+	id="stars"
+	role="presentation"
+>
+	<div
+		class:list={[
+			'block h-full w-full bg-gradient-to-tr from-cyan-900/20 via-violet-900/20 to-black/20',
+			'opacity-0 transition-opacity delay-100 duration-200 motion-safe:opacity-100',
+		]}
+	>
+	</div>
+</div>
+<script src="~/scripts/stars.ts"></script>
