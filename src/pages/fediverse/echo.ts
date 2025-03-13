@@ -52,9 +52,9 @@ export const GET: APIRoute = async ({ site }) => {
 	const siteUrl = site ?? new URL('http://localhost:4321');
 	const host = trimTrailingSlash(siteUrl);
 	const avatar: ActorMedia = {
-		mediaType: 'image/svg+xml',
+		mediaType: 'image/jpg',
 		type: 'Image',
-		url: `${host}/favicon.svg`,
+		url: `${host}/favicon.jpg`,
 	};
 
 	const key = await fs.readFile(
