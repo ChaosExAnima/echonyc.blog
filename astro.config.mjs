@@ -13,6 +13,11 @@ const { CF_PAGES_URL, NODE_ENV } = loadEnv(
 	process.cwd(),
 );
 
+console.log(
+	'env:',
+	loadEnv(process.env.NODE_ENV ?? 'development', process.cwd()),
+);
+
 // https://astro.build/config
 export default defineConfig({
 	experimental: {
