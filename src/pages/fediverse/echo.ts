@@ -49,10 +49,11 @@ interface ActorMedia {
 }
 
 function formatAttachment(name: string, url: string): ActorAttachment {
+	const urlWithoutProtocol = url.replace(/^https?:\/\//, '');
 	return {
 		name,
 		type: 'PropertyValue',
-		value: `<a href="${url}" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span>maho.dev</span></a>`,
+		value: `<a href="https://${urlWithoutProtocol}" target="_blank" rel="nofollow noopener noreferrer me" translate="no"><span class="invisible">https://</span><span>${urlWithoutProtocol}</span></a>`,
 	};
 }
 
@@ -74,8 +75,8 @@ export const GET: APIRoute = async ({ site }) => {
 		'@context': ActivityStreamContext,
 		attachment: [
 			formatAttachment('Blog', host),
-			formatAttachment('GitHub', 'https://github.com/ChaosExAnima'),
 			formatAttachment('Mastodon', FEDI_USER),
+			formatAttachment('GitHub', 'github.com/ChaosExAnima'),
 		],
 		discoverable: true,
 		followers: `${FEDI_USER}/followers`,
