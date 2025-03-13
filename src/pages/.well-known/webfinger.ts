@@ -1,4 +1,4 @@
-import { APIRoute } from 'astro';
+import type { APIRoute } from 'astro';
 
 import { USERNAME } from '~/consts';
 import { trimTrailingSlash } from '~/lib/urls';
