@@ -3,7 +3,14 @@ import type { APIRoute } from 'astro';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import { FEDI_USER, SITE_DESCRIPTION, SITE_TITLE, USERNAME } from '~/consts';
+import {
+	FEDI_USER,
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	SOCIAL_LINKS,
+	type SocialLink,
+	USERNAME,
+} from '~/consts';
 import {
 	type ActivityStream,
 	ActivityStreamContext,
@@ -48,7 +55,7 @@ interface ActorMedia {
 	url: string;
 }
 
-function formatAttachment(name: string, url: string): ActorAttachment {
+function formatAttachment({ name, url }: SocialLink): ActorAttachment {
 	const urlWithoutProtocol = url.replace(/^https?:\/\//, '');
 	return {
 		name,
@@ -73,11 +80,7 @@ export const GET: APIRoute = async ({ site }) => {
 
 	const body: Actor = {
 		'@context': ActivityStreamContext,
-		attachment: [
-			formatAttachment('Blog', host),
-			formatAttachment('Mastodon', FEDI_USER),
-			formatAttachment('GitHub', 'github.com/ChaosExAnima'),
-		],
+		attachment: SOCIAL_LINKS.map(formatAttachment),
 		discoverable: true,
 		followers: `${FEDI_USER}/followers`,
 		following: `${FEDI_USER}/following`,
