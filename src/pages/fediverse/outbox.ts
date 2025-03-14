@@ -35,7 +35,7 @@ interface OutboxArticle extends ActivityStream {
 	content: string;
 	hash?: string;
 	published: string;
-	tags: Hashtag[];
+	tag: Hashtag[];
 	title: string;
 	type: 'Article';
 	url: string;
@@ -89,7 +89,7 @@ function postToArticle(post: Post, host: string): OutboxItem {
 			content: post.rendered?.html ?? '',
 			id: permalink,
 			published: post.data.date.toISOString(),
-			tags: (post.data.categories ?? []).map((tag) => ({
+			tag: (post.data.categories ?? []).map((tag) => ({
 				href: `${host}/category/${tag.toLowerCase().replaceAll(/[^a-z]+/g, '-')}`,
 				name: `#${tag}`,
 				type: 'Hashtag',
