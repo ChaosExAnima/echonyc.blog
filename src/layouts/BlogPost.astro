@@ -24,6 +24,7 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 			<Image
 				alt={coverAlt ?? ''}
 				class="w-screen min-w-80 object-cover object-center"
+				data-pagefind-meta="image"
 				hash={hash}
 				layout="full-width"
 				loading="eager"

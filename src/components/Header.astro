@@ -3,6 +3,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
 import HeaderLink from './HeaderLink.astro';
 import Link from './Link.astro';
+import Search from './Search.astro';
 
 interface Props {
 	background?: boolean;
@@ -34,11 +35,8 @@ const { background = true, class: className } = Astro.props;
 			<HeaderLink href="/blog" text="Blog" />
 			<HeaderLink href="/pronouns" text="My Pronouns" />
 		</ol>
+		<div class="">
+			<Search />
+		</div>
 	</nav>
 </header>
-
-<style>
-	:root {
-		--pagefind-ui-primary: var(--colors-violet-400);
-	}
-</style>

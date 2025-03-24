@@ -1,0 +1,47 @@
+---
+
+---
+
+<input
+	class="rounded-lg border border-violet-400 p-2"
+	id="search"
+	placeholder="Search"
+	type="search"
+/>
+
+<div class="fixed" id="results"></div>
+
+<script is:inline>
+	async function load() {
+		window.pageFind = await import('/pagefind/pagefind.js');
+	}
+	load();
+</script>
+<script>
+	const searchElement = document.querySelector<HTMLInputElement>('#search')!;
+	const resultsElement = document.querySelector<HTMLDivElement>('#results')!;
+	searchElement.addEventListener('input', async () => {
+		if (!window.pageFind) {
+			return;
+		}
+
+		// search the index using the input value
+		const search = await window.pageFind.search(searchElement);
+
+		// clear the old results
+		resultsElement.innerHTML = '';
+
+		// add the new results
+		for (const result of search.results) {
+			const data =
+				typeof result.data === 'function'
+					? await result.data()
+					: result.data;
+			resultsElement.innerHTML += `
+				<a href="${data.url}">
+				<h3>${data.meta.title}</h3>
+				<p>${data.excerpt}</p>
+				</a>`;
+		}
+	});
+</script>
