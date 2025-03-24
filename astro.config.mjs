@@ -5,7 +5,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import pageInsight from 'astro-page-insight';
-import pagefind from 'astro-pagefind';
 import { defineConfig } from 'astro/config';
 
 function getSite() {
@@ -27,7 +26,7 @@ export default defineConfig({
 	experimental: {
 		responsiveImages: true,
 	},
-	integrations: [mdx(), sitemap(), pageInsight(), pagefind()],
+	integrations: [mdx(), sitemap(), pageInsight()],
 	redirects: {
 		'/my-pronouns': '/pronouns',
 	},
