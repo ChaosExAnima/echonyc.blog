@@ -2,9 +2,9 @@
 title: Storms
 date: 2020-07-21
 categories:
-  - musings
-  - queerness
-  - transness
+    - musings
+    - queerness
+    - transness
 coverImage: images/pexels-photo-39811.jpeg
 coverAlt: Photo of a wet road surrounded by trees on a rainy day
 ---

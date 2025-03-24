@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 import
 .frontmatter
+*.code-workspace
+_private.pem

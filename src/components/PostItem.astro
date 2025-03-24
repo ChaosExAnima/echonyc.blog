@@ -5,10 +5,11 @@ import FormattedDate from './FormattedDate.astro';
 import Image from './Image.astro';
 
 type Props = {
+	class?: string;
 	header: 'h2' | 'h3';
 	lazy?: boolean;
 } & Post;
-const { header: Header, lazy = true, ...post } = Astro.props;
+const { class: className, header: Header, lazy = true, ...post } = Astro.props;
 
 const hash = await postImageHash(post);
 const { coverAlt = '', coverImage, date, title } = post.data;
@@ -17,6 +18,7 @@ const id = `post-${post.id}`;
 
 <script src="~/scripts/images.ts"></script>
 <a
+	class={className}
 	href={getPostPath(post)}
 	itemprop="blogPost"
 	itemscope
@@ -35,12 +37,12 @@ const id = `post-${post.id}`;
 				wrapperClass="rounded-md overflow-hidden"
 			/>
 		) : (
-			<div class="w-full h-80 rounded-md image-filter" data-hash={hash} />
+			<div class="image-filter h-80 w-full rounded-md" data-hash={hash} />
 		)
 	}
 	<Header
 		aria-label={title}
-		class="font-thin text-3xl my-4"
+		class="my-4 text-3xl font-thin"
 		id={id}
 		itemprop="headline"
 	>

@@ -4,32 +4,32 @@ import Search from 'astro-pagefind/components/Search';
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
 
 import HeaderLink from './HeaderLink.astro';
+import Link from './Link.astro';
 
 interface Props {
+	background?: boolean;
 	class?: string;
 }
 
-const { class: className } = Astro.props;
+const { background = true, class: className } = Astro.props;
 ---
 
-<header class:list={['bg-black px-10', className]}>
+<header class:list={['px-10', background && 'bg-black', className]}>
 	<nav
-		class="flex flex-col sm:flex-row gap-4 items-center justify-between max-w-screen-2xl mx-auto py-10"
+		class="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-4 py-10 sm:flex-row"
 	>
-		<div
-			class="text-center sm:text-left hover:text-violet-300 transition-colors"
-		>
-			<a href="/">
-				<h2 aria-label={SITE_TITLE} class="text-2xl mb-2">
+		<div class="text-center sm:text-left">
+			<Link href="/">
+				<h2 aria-label={SITE_TITLE} class="mb-2 text-2xl">
 					{SITE_TITLE}
 				</h2>
 				<h3
 					aria-label={SITE_DESCRIPTION}
-					class="italic font-light text-base"
+					class="text-base font-light italic"
 				>
 					{SITE_DESCRIPTION}
 				</h3>
-			</a>
+			</Link>
 		</div>
 		<ol class="flex gap-4">
 			<HeaderLink href="/" text="Home" />

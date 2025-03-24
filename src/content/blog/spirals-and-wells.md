@@ -2,9 +2,9 @@
 title: Spirals and Wells
 date: 2019-03-20
 categories:
-  - me
-  - medical
-  - musings
+    - me
+    - medical
+    - musings
 ---
 
 **CW: Mental health, depression.**

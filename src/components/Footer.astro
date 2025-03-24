@@ -1,24 +1,32 @@
 ---
 import { SITE_TITLE } from '~/consts';
 
+import Link from './Link.astro';
+
 const year = new Date().getFullYear();
 
 interface Props {
+	background?: boolean;
 	class?: string;
 }
 
-const { class: className } = Astro.props;
+const { background = true, class: className } = Astro.props;
 ---
 
 <footer
 	aria-label={`${SITE_TITLE}, ${year}`}
-	class:list={['bg-black px-10', className]}
+	class:list={['px-10', background && 'bg-black', className]}
 	itemprop="copyrightNotice"
 >
-	<div class="font-light max-w-screen-2xl mx-auto py-10">
+	<div class="mx-auto flex max-w-screen-2xl gap-4 py-10 font-light">
 		{SITE_TITLE}, {year}
+		<Link href="/privacy" text="Privacy Policy" />
+		<Link
+			href="https://github.com/ChaosExAnima/echonyc.blog"
+			text="Source code"
+		/>
 	</div>
-	<section
+	<div
 		class="hidden"
 		id="author"
 		itemprop="author"
@@ -28,5 +36,5 @@ const { class: className } = Astro.props;
 		<meta content="Echo" itemprop="name" />
 		<meta content="Gender Nebula" itemprop="gender" />
 		{Astro.site && <meta content={Astro.site.toString()} itemprop="url" />}
-	</section>
+	</div>
 </footer>

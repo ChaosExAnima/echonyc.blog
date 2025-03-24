@@ -1,13 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 
+import Link from '~/components/Link.astro';
 import PostList from '~/components/PostList.astro';
 import Prose from '~/components/Prose.astro';
+import { SOCIAL_LINKS } from '~/consts';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-	.slice(0, 3);
+	.slice(0, 4);
 ---
 
 <BaseLayout>
@@ -21,50 +23,40 @@ const posts = (await getCollection('blog'))
 		</p>
 		<p>Feel free to browse around or look me up on various social media:</p>
 		<ul>
-			<li>
-				<a href="https://github.com/ChaosExAnima" rel="me noreferrer">
-					GitHub
-				</a>
-			</li>
-			<li>
-				<a
-					href="https://bsky.app/profile/echo.ishella.gay"
-					rel="me noreferrer"
-				>
-					Bluesky
-				</a>
-			</li>
-			<li>
-				<a href="https://tech.lgbt/@chaosexanima" rel="me noreferrer">
-					Mastodon
-				</a>
-			</li>
-			<li>
-				<a
-					href="https://instagram.com/chaosexanima"
-					rel="me noreferrer"
-				>
-					Instagram
-				</a>
-			</li>
-			<li>
-				<a href="https://echo.tumblr.com" rel="me noreferrer">Tumblr</a>
-			</li>
+			{
+				SOCIAL_LINKS.map(({ name, url }) => (
+					<li>
+						<a href={url} rel="me noreferrer">
+							{name}
+						</a>
+					</li>
+				))
+			}
 		</ul>
 	</Prose>
 	<section aria-labelledby="latest-writings" class="mt-10">
-		<Prose as="header">
-			<h2 class="flex flex-col sm:flex-row gap-4 items-baseline mb-10">
-				<span id="latest-writings">Latest writings</span>
-				<a class="text-base font-light" href="/blog">
-					Read more&hellip;
-				</a>
-			</h2>
-		</Prose>
-		<PostList header="h3" posts={posts} />
-		<a
-			class="text-base font-light mt-10 block text-violet-400 hover:text-violet-300 transition-colors underline lg:hidden"
-			href="/blog">Read more&hellip;</a
+		<h2
+			class="mb-10 flex flex-col items-baseline gap-4 text-4xl font-thin sm:flex-row"
 		>
+			<span id="latest-writings">Latest writings</span>
+
+			<Link
+				class="text-base text-violet-400 underline hover:text-violet-300"
+				href="/blog"
+			>
+				Read more&hellip;
+			</Link>
+		</h2>
+		<PostList
+			header="h3"
+			postClass="last:hidden last:md:max-lg:block"
+			posts={posts}
+		/>
+		<Link
+			class="mt-10 block text-base text-violet-400 underline hover:text-violet-300 lg:hidden"
+			href="/blog"
+		>
+			Read more&hellip;
+		</Link>
 	</section>
 </BaseLayout>

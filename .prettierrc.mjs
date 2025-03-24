@@ -8,7 +8,7 @@ export default {
 			},
 		},
 	],
-	plugins: ['prettier-plugin-astro'],
+	plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 	singleQuote: true,
 	tabWidth: 4,
 	useTabs: true,

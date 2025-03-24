@@ -1,8 +1,8 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
+import Headline from '~/components/Headline.astro';
 import PostList from '~/components/PostList.astro';
-import Prose from '~/components/Prose.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { getPosts } from '~/lib/posts';
 
@@ -23,10 +23,8 @@ const { posts, year } = Astro.props;
 ---
 
 <BaseLayout aria-labelledby="title">
-	<Prose as="header" class="my-10">
-		<h1 id="title" itemprop="headline">
-			Posts from: <strong class="font-normal">{year}</strong>
-		</h1>
-	</Prose>
+	<Headline class="my-10" id="title">
+		Posts from: <strong class="font-normal">{year}</strong>
+	</Headline>
 	<PostList posts={posts!} />
 </BaseLayout>

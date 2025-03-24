@@ -1,0 +1,40 @@
+---
+import type { MarkdownInstance } from 'astro';
+
+import { z } from 'astro:content';
+
+import PostMeta from '~/components/PostMeta.astro';
+import Prose from '~/components/Prose.astro';
+
+import BaseLayout from './BaseLayout.astro';
+
+const frontMatterSchema = z.object({
+	date: z.coerce.date().optional(),
+	description: z.string().optional(),
+	head: z.string().optional(),
+	title: z.string().optional(),
+});
+type Props = Pick<
+	MarkdownInstance<z.infer<typeof frontMatterSchema>>,
+	'frontmatter'
+>;
+
+const { date, description, head, title } = frontMatterSchema.parse(
+	Astro.props.frontmatter,
+);
+---
+
+<BaseLayout description={description} itemref="author" title={title}>
+	<Prose
+		as="article"
+		class="mb-10 rounded-md bg-black/50 p-10"
+		itemprop="articleBody"
+	>
+		<h1 class="mb-0" id="post-title" itemprop="headline">
+			{head ?? title}
+		</h1>
+		{date && <PostMeta date={date}>Last modified:</PostMeta>}
+		<slot />
+	</Prose>
+	<slot name="after" />
+</BaseLayout>
