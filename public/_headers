@@ -3,3 +3,6 @@
 
 /fediverse/*
 	Content-Type: application/activity+json
+
+/*
+	X-Clacks-Overhead: GNU Terry Pratchett
