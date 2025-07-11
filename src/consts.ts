@@ -20,9 +20,4 @@ export const SOCIAL_LINKS: SocialLink[] = [
 		name: 'Tumblr',
 		url: 'https://echo.tumblr.com',
 	},
-	{
-		name: 'Bluesky',
-		text: '@echo.ishella.gay',
-		url: 'https://bsky.app/profile/echo.ishella.gay',
-	},
 ];

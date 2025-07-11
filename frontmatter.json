@@ -12,7 +12,11 @@
 	"frontMatter.media.contentTypes": [
 		{
 			"name": "default",
-			"fileTypes": ["png", "jpeg", "jpg"],
+			"fileTypes": [
+				"png",
+				"jpeg",
+				"jpg"
+			],
 			"fields": [
 				{
 					"title": "Alt text",
@@ -68,6 +72,12 @@
 					"title": "categories",
 					"name": "categories",
 					"type": "categories"
+				},
+				{
+					"title": "layout",
+					"name": "layout",
+					"type": "string",
+					"single": true
 				}
 			]
 		}

@@ -19,5 +19,6 @@
 	},
 	"debug.javascript.defaultRuntimeExecutable": {
 		"pwa-node": "/Users/echo/.local/share/mise/shims/node"
-	}
+	},
+	"editor.inlineSuggest.enabled": false
 }
