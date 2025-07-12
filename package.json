@@ -4,7 +4,15 @@
 	"version": "1.0.0",
 	"packageManager": "pnpm@10.8.1",
 	"engines": {
-		"node": "24"
+		"node": "24",
+		"pnpm": ">=10"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"puppeteer",
+			"sharp"
+		]
 	},
 	"scripts": {
 		"dev": "astro dev",
