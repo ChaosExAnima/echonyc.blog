@@ -34,14 +34,12 @@ jobs:
               run: |
                   pnpm run preview &
                   for i in {1..30}; do
-                    if curl -sSf http://localhost:4321 2> /dev/null; then
-                      echo "Server is up!"
+                    if curl -sSf http://localhost:4321 2>&1 /dev/null; then
                       break
                     fi
-                    echo "Waiting for server..."
                     sleep 1
                   done
-                  pnpm run a11y 2> /dev/null | tee pa11y_output.txt
+                  pnpm run a11y | tee pa11y_output.txt
                   exit ${PIPESTATUS[0]}
 
             - name: Read pa11y_output file.
