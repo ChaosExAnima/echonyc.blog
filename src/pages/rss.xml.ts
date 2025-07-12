@@ -2,7 +2,7 @@ import type { APIContext } from 'astro';
 
 import rss from '@astrojs/rss';
 
-import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
+import { SITE_DESCRIPTION, SITE_TITLE } from '~/lib/constants';
 import { getPostPath, getPosts } from '~/lib/posts';
 
 export async function GET(context: APIContext) {

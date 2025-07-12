@@ -10,7 +10,7 @@ import {
 	SOCIAL_LINKS,
 	type SocialLink,
 	USERNAME,
-} from '~/consts';
+} from '~/lib/constants';
 import {
 	type ActivityStream,
 	ActivityStreamContext,

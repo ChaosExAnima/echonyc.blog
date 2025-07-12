@@ -2,21 +2,23 @@
 	"name": "echonyc-blog",
 	"type": "module",
 	"version": "1.0.0",
-	"packageManager": "pnpm@9.15.4",
+	"packageManager": "pnpm@10.8.1",
+	"engines": {
+		"node": "24"
+	},
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro",
-		"lint": "eslint .",
+		"lint": "astro check && eslint .",
 		"a11y": "pa11y-ci --sitemap http://localhost:4321/sitemap-index.xml"
 	},
 	"dependencies": {
+		"@astrojs/check": "^0.9.4",
 		"@astrojs/mdx": "^4.2.3",
 		"@astrojs/rss": "^4.0.11",
 		"@astrojs/sitemap": "^3.3.0",
 		"@fontsource-variable/source-serif-4": "^5.2.6",
-		"@types/react-dom": "^19.1.1",
 		"astro": "^5.6.1",
 		"astro-page-insight": "^0.10.1",
 		"sharp": "^0.34.1",
