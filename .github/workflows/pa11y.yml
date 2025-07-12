@@ -34,7 +34,7 @@ jobs:
               run: |
                   pnpm run preview &
                   for i in {1..30}; do
-                    if curl -sf http://localhost:4321; then
+                    if curl -sf http://localhost:4321 > /dev/null; then
                       break
                     fi
                     sleep 1
