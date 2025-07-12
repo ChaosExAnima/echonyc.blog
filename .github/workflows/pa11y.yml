@@ -22,7 +22,7 @@ jobs:
                   node-version-file: package.json
 
             - name: Install dependencies
-              run: pnpm approve-builds && pnpm install
+              run: pnpm install && pnpm approve-builds
 
             - name: Lint the code
               run: pnpm run lint
@@ -34,7 +34,7 @@ jobs:
               run: |
                   pnpm run preview &
                   for i in {1..30}; do
-                    if curl -sSf http://localhost:4321 2>&1 /dev/null; then
+                    if curl -sf http://localhost:4321; then
                       break
                     fi
                     sleep 1
