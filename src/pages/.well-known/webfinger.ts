@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-import { USERNAME } from '~/consts';
+import { USERNAME } from '~/lib/constants';
 import { trimTrailingSlash } from '~/lib/urls';
 
 interface Webfinger {

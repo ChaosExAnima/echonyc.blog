@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Link from '~/components/Link.astro';
 import PostList from '~/components/PostList.astro';
 import Prose from '~/components/Prose.astro';
-import { SOCIAL_LINKS } from '~/consts';
+import { SOCIAL_LINKS } from '~/lib/constants';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog'))

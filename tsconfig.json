@@ -1,14 +1,20 @@
 {
 	"extends": "astro/tsconfigs/strict",
-	"include": [".astro/types.d.ts", "**/*"],
+	"include": [
+		".astro/types.d.ts",
+		"**/*",
+		"src/pages/.well-known/webfinger.ts"
+	],
 	"exclude": ["dist"],
 	"compilerOptions": {
-		"strictNullChecks": true,
-		"jsx": "react-jsx",
-		"jsxImportSource": "react",
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["src/*"]
+			"~/components/*": ["./src/components/*"],
+			"~/pages/*": ["./src/pages/*"],
+			"~/layouts/*": ["./src/layouts/*"],
+			"~/lib/*": ["./src/lib/*"],
+			"~/scripts/*": ["./src/scripts/*"],
+			"~/styles/*": ["./src/styles/*"]
 		}
 	}
 }

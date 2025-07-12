@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 import { getCollection } from 'astro:content';
 
-import { SITE_DESCRIPTION } from '~/consts';
+import { SITE_DESCRIPTION } from '~/lib/constants';
 import { getPostPath, type Post } from '~/lib/posts';
 import {
 	type ActivityStream,
