@@ -20,8 +20,8 @@ function getSite() {
 
 // https://astro.build/config
 export default defineConfig({
-	experimental: {
-		responsiveImages: true,
+	image: {
+		responsiveStyles: true,
 	},
 	integrations: [mdx(), sitemap(), pageInsight()],
 	redirects: {
