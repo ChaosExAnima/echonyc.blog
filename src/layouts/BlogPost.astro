@@ -10,7 +10,14 @@ import BaseLayout from './BaseLayout.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { categories = [], coverAlt, coverImage, date, title } = Astro.props;
+const {
+	categories = [],
+	contentWarning,
+	coverAlt,
+	coverImage,
+	date,
+	title,
+} = Astro.props;
 const hash = coverImage ? await getThumbhash(coverImage) : '';
 ---
 
@@ -45,6 +52,13 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 			{title}
 		</h1>
 		<PostMeta categories={categories} date={date} />
+		{
+			contentWarning && (
+				<aside class="rounded-lg bg-rose-950 p-4">
+					Content Note: {contentWarning}
+				</aside>
+			)
+		}
 		<slot />
 	</Prose>
 </BaseLayout>

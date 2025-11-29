@@ -33,12 +33,14 @@ interface OutboxArticle extends ActivityStream {
 	attachments: Attachments[];
 	attributedTo: string;
 	content: string;
+	summary?: string;
 	hash?: string;
 	published: string;
 	tag: Hashtag[];
 	title: string;
 	type: 'Article';
 	url: string;
+	'as:sensitive': boolean;
 }
 
 interface OutboxItem extends ActivityStream {
@@ -97,6 +99,8 @@ function postToArticle(post: Post, host: string): OutboxItem {
 			title: post.data.title,
 			type: 'Article',
 			url: permalink,
+			summary: post.data.contentWarning,
+			'as:sensitive': !!post.data.contentWarning,
 		},
 		published: post.data.date.toISOString(),
 		to: [`${ActivityStreamContext}#Public`],
