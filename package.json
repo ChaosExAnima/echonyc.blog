@@ -22,10 +22,10 @@
 		"a11y": "pa11y-ci --sitemap http://localhost:4321/sitemap-index.xml"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
-		"@astrojs/mdx": "^4.2.3",
-		"@astrojs/rss": "^4.0.11",
-		"@astrojs/sitemap": "^3.3.0",
+		"@astrojs/check": "^0.9.6",
+		"@astrojs/mdx": "^4.3.12",
+		"@astrojs/rss": "^4.0.14",
+		"@astrojs/sitemap": "^3.6.0",
 		"@fontsource-variable/source-serif-4": "^5.2.6",
 		"astro": "^5.16.3",
 		"astro-page-insight": "^0.10.1",
@@ -47,7 +47,7 @@
 		"prettier": "^3.5.3",
 		"prettier-plugin-astro": "^0.14.1",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"typescript": "^5.8.3"
+		"typescript": "^5.9.3"
 	},
 	"overrides": {
 		"ajv": "^8.17.1",
