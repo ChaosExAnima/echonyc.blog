@@ -6,6 +6,8 @@ import '../styles/global.css';
 import '@fontsource-variable/source-serif-4';
 import sourceSerif4 from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-standard-normal.woff2?url';
 
+import { FEDI_USER } from '~/lib/constants';
+
 interface Props {
 	description: string;
 	image?: string;
@@ -60,6 +62,9 @@ const { description, image = '/blog-placeholder-1.jpg', title } = Astro.props;
 <meta content={title} property="twitter:title" />
 <meta content={description} property="twitter:description" />
 <meta content={new URL(image, Astro.url)} property="twitter:image" />
+
+<!-- Fediverse -->
+<meta content={FEDI_USER} name="fediverse:creator" />
 
 <!-- CloudFlare -->
 <meta
