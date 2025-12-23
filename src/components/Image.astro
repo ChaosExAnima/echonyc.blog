@@ -3,44 +3,78 @@ import type { HTMLAttributes, Polymorphic } from 'astro/types';
 
 import { Image as AstroImage, type LocalImageProps } from 'astro:assets';
 
+import { getThumbhash } from '~/lib/images';
+
 // Normally I'd use a type var, but Astro doesn't pick up props if I do it that way.
 type Props = {
+	align?: 'left' | 'right';
 	alt: string | undefined;
 	hash?: string;
+	noCaption?: boolean;
+	noFilter?: boolean;
 	wrapperAttrs?: Omit<HTMLAttributes<'div' | 'figure'>, 'class'>;
 	wrapperClass?: string;
 } & LocalImageProps &
 	Polymorphic<{ as: 'div' | 'figure' }>;
 
 const {
+	align,
 	alt = '',
 	as: Wrapper = 'figure',
 	class: className,
-	hash,
+	hash: pregenHash,
 	itemprop = 'associatedMedia',
+	noCaption = false,
+	noFilter = false,
 	src,
+	title,
 	wrapperAttrs = {},
 	wrapperClass,
 	...props
 } = Astro.props;
+
+const hash = pregenHash ?? (await getThumbhash(src));
+
+const hasCaption = !noCaption && !!title;
+const Caption = Wrapper === 'figure' ? 'figcaption' : 'p';
 ---
 
 <script src="~/scripts/images.ts"></script>
 <Wrapper
 	{...wrapperAttrs}
-	class:list={['image-filter bg-cover text-transparent', wrapperClass]}
-	data-hash={hash}
+	class:list={[
+		align === 'left' &&
+			'md:float-left md:mt-0 md:mr-4 md:-ml-16 md:max-w-1/2',
+		align === 'right' &&
+			'md:float-right md:mt-0 md:-mr-16 md:ml-8 md:max-w-1/2',
+		hasCaption && 'rounded-md bg-slate-700/40 p-2 backdrop-blur-sm',
+		wrapperClass,
+	]}
 	itemprop={itemprop}
 	itemscope
 	itemtype="https://schema.org/ImageObject"
 >
-	<AstroImage
-		{...props}
-		alt={alt}
-		class:list={['object-cover object-center', className]}
-		itemprop="contentUrl"
-		src={src}
-	/>
+	<div
+		class:list={[
+			'h-full w-full overflow-hidden bg-cover',
+			!noFilter && 'image-filter',
+			!hasCaption && 'rounded-md',
+		]}
+		data-hash={hash}
+	>
+		<AstroImage
+			{...props}
+			alt={alt}
+			class:list={[
+				'object-cover object-center text-transparent',
+				className,
+			]}
+			itemprop="contentUrl"
+			src={src}
+			title={title}
+		/>
+	</div>
+	{hasCaption && <Caption>{title}</Caption>}
 	{alt && <meta content={alt} itemprop="description" />}
 	<slot />
 </Wrapper>

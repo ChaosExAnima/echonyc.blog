@@ -31,7 +31,7 @@ function imageFadeOnLoad(wrapper: HTMLElement) {
 		return;
 	}
 	image.addEventListener('load', () => {
-		image.classList.add('animate-fade');
+		image.classList.add('animate-fade-in');
 	});
 }
 

@@ -2,7 +2,10 @@
 	"$schema": "https://frontmatter.codes/frontmatter.schema.json",
 	"frontMatter.framework.id": "astro",
 	"frontMatter.preview.host": "http://localhost:4321",
-	"frontMatter.content.publicFolder": "[[workspace]]/src/content/blog/images",
+	"frontMatter.content.publicFolder": {
+		"path": "[[workspace]]/src/content/blog/images",
+		"relative": true
+	},
 	"frontMatter.content.pageFolders": [
 		{
 			"title": "blog",
