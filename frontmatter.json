@@ -87,5 +87,5 @@
 		}
 	],
 	"frontMatter.website.host": "https://echonyc.blog",
-	"frontMatter.framework.startCommand": "pnpm dev"
+	"frontMatter.framework.startCommand": "yarn dev"
 }
