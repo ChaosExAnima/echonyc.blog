@@ -14,20 +14,23 @@ const {
 	categories = [],
 	contentWarning,
 	coverAlt,
+	coverDisable,
 	coverImage,
 	date,
 	title,
 } = Astro.props;
+
+const hasCover = !!coverImage && !coverDisable;
 const hash = coverImage ? await getThumbhash(coverImage) : '';
 ---
 
 <BaseLayout
 	itemref="cover-image author"
 	itemtype="http://schema.org/BlogPosting"
-	noStars={!!coverImage}
+	noStars={hasCover}
 >
 	{
-		coverImage && (
+		hasCover && (
 			<Image
 				alt={coverAlt ?? ''}
 				class="w-screen min-w-80 object-cover object-center"
@@ -43,8 +46,8 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 		as="article"
 		class:list={[
 			'mb-10 rounded-md p-10',
-			coverImage && 'mt-[20vh] bg-black',
-			!coverImage && 'bg-black/20',
+			hasCover && 'mt-[20vh] bg-black',
+			!hasCover && 'bg-black/20',
 		]}
 		itemprop="articleBody"
 	>

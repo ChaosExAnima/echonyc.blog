@@ -16,5 +16,8 @@
 			"other": false
 		}
 	},
-	"editor.inlineSuggest.enabled": false
+	"editor.inlineSuggest.enabled": false,
+	"[mdx]": {
+		"editor.wordWrap": "on"
+	}
 }
