@@ -10,22 +10,19 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Enable Corepack
               run: corepack enable
 
             - name: Install Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v6
               with:
                   cache: 'yarn'
                   node-version-file: package.json
 
             - name: Install dependencies
               run: yarn install
-
-            - name: Lint the code
-              run: yarn run lint
 
             - name: Build site
               run: yarn run build --site http://localhost:4321
