@@ -27,3 +27,12 @@ import
 .frontmatter
 *.code-workspace
 _private.pem
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
