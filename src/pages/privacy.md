@@ -4,6 +4,7 @@ description: Privacy policy for Echo from NYC
 layout: ../layouts/Page.astro
 date: 2025-02-04
 ---
+
 This Privacy Policy describes My policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
 
 I use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the Privacy Policy Generator.
@@ -42,6 +43,7 @@ I do **not** use Cookies and similar tracking technologies to track the activity
 Your information, including Personal Data, is processed at Cloudflare. See their policies [here](https://www.cloudflare.com/trust-hub/).
 
 ### Law enforcement
+
 Under certain circumstances, I may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).
 
 ### Security of Your Personal Data
