@@ -1,13 +1,9 @@
 {
 	"defaults": {
 		"standard": "WCAG2AA",
-		"runners": [
-			"axe"
-		],
+		"runners": ["axe"],
 		"chromeLaunchConfig": {
-			"args": [
-				"--no-sandbox"
-			]
+			"args": ["--no-sandbox"]
 		}
 	}
 }
