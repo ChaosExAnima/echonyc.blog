@@ -22,6 +22,16 @@ function getSite() {
 export default defineConfig({
 	image: {
 		responsiveStyles: true,
+		service: {
+			config: {
+				tintMatrix: [
+					[0.35, 0.688, 0.167],
+					[0.301, 0.59, 0.145],
+					[0.392, 0.767, 0.188],
+				],
+			},
+			entrypoint: './src/lib/image-service.ts',
+		},
 	},
 	integrations: [mdx(), sitemap(), pageInsight()],
 	redirects: {
