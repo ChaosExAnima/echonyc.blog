@@ -3,6 +3,8 @@ export const SITE_DESCRIPTION = 'Musing into the void';
 export const USERNAME = 'echo';
 export const FEDI_USER = 'https://ishella.gay/@echo';
 
+export const themeColor = 'hsl(256.16, 100%, 76.89%)'; // Violet 400
+
 export interface SocialLink {
 	name: string;
 	text?: string;

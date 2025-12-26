@@ -32,7 +32,7 @@ export async function getPosts() {
 export function postImageHash(post: Post) {
 	const { coverImage, title } = post.data;
 	if (coverImage) {
-		return getThumbhash(coverImage.src);
+		return getThumbhash(coverImage);
 	}
 	const hash = crypto.createHash('md5');
 	hash.update(title);
