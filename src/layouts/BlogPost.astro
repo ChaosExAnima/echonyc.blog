@@ -25,9 +25,11 @@ const hash = coverImage ? await getThumbhash(coverImage) : '';
 ---
 
 <BaseLayout
+	image={coverImage}
 	itemref="cover-image author"
 	itemtype="http://schema.org/BlogPosting"
 	noStars={hasCover}
+	title={title}
 >
 	{
 		hasCover && (
