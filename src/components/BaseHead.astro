@@ -4,19 +4,33 @@
 import '../styles/global.css';
 
 import '@fontsource-variable/source-serif-4';
+import type { ImageMetadata } from 'astro';
+
 import sourceSerif4 from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-standard-normal.woff2?url';
+import { Seo } from 'astro-seo-meta';
+import { getImage } from 'astro:assets';
+import colors from 'tailwindcss/colors';
 
 import { FEDI_USER } from '~/lib/constants';
+import { toAbsoluteUrl } from '~/lib/urls';
 
 interface Props {
 	description: string;
-	image?: string;
+	image?: ImageMetadata;
 	title: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { description, image, title } = Astro.props;
 
-const { description, image = '/blog-placeholder-1.jpg', title } = Astro.props;
+const canonicalURL = toAbsoluteUrl(Astro.url.pathname);
+const themeColor = colors.violet[400];
+
+const fbImage = image
+	? await getImage({ format: 'jpg', height: 566, src: image, width: 1080 })
+	: null;
+const twitterImage = image
+	? await getImage({ format: 'jpg', height: 720, src: image, width: 1080 })
+	: null;
 ---
 
 <!-- Global Metadata -->
@@ -45,23 +59,22 @@ const { description, image = '/blog-placeholder-1.jpg', title } = Astro.props;
 <link href={canonicalURL} rel="canonical" />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta content={title} name="title" />
-<meta content={description} name="description" />
-
-<!-- Open Graph / Facebook -->
-<meta content="website" property="og:type" />
-<meta content={Astro.url} property="og:url" />
-<meta content={title} property="og:title" />
-<meta content={description} property="og:description" />
-<meta content={new URL(image, Astro.url)} property="og:image" />
-
-<!-- Twitter -->
-<meta content="summary_large_image" property="twitter:card" />
-<meta content={Astro.url} property="twitter:url" />
-<meta content={title} property="twitter:title" />
-<meta content={description} property="twitter:description" />
-<meta content={new URL(image, Astro.url)} property="twitter:image" />
+<Seo
+	colorScheme="dark"
+	description={description}
+	facebook={{
+		image: toAbsoluteUrl(fbImage?.src),
+		type: 'website',
+		url: canonicalURL,
+	}}
+	keywords={['blog']}
+	themeColor={themeColor}
+	title={title}
+	twitter={{
+		card: 'summary_large_image',
+		image: toAbsoluteUrl(twitterImage?.src),
+	}}
+/>
 
 <!-- Fediverse -->
 <meta content={FEDI_USER} name="fediverse:creator" />

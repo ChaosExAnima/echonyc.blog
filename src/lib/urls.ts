@@ -1,3 +1,5 @@
+import { site } from 'astro:config/server';
+
 export const ActivityStreamContext = 'https://www.w3.org/ns/activitystreams';
 
 export interface ActivityStream {
@@ -9,4 +11,11 @@ export interface ActivityStream {
 export function trimTrailingSlash(path: string | URL) {
 	const url = path instanceof URL ? path.toString() : path;
 	return url.replace(/\/$/, '');
+}
+
+export function toAbsoluteUrl(path?: URL | string) {
+	if (!path) {
+		return undefined;
+	}
+	return new URL(path, site).toString();
 }
