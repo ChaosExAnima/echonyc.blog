@@ -2,7 +2,7 @@
 	"name": "echonyc-blog",
 	"type": "module",
 	"version": "1.0.0",
-	"packageManager": "yarn@4.12.0",
+	"packageManager": "yarn@4.14.1",
 	"engines": {
 		"node": "24",
 		"yarn": "^4.12"
