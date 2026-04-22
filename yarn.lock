@@ -3036,12 +3036,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro-seo-meta@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "astro-seo-meta@npm:5.2.0"
+"astro-seo-meta@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "astro-seo-meta@npm:6.0.0"
   peerDependencies:
-    astro: ^5.0.0
-  checksum: 10c0/c72260924df781c5e272b0221ba3c17429381928fb65d2a8fbf3401501c8f9319b5237c317db94a0e820de8314b13355d68a3c6d7884a3eaa86d6577f44ade05
+    astro: ^6.0.0
+  checksum: 10c0/7c12075b28ac7c0e60cc8482de290cc9d2f45a38cf073efffebc4ae1f1dbb16b9a9bbd586aed0ac6e17d5c9b1366000143bdb07cf5bf08feae10da1d52d26ce0
   languageName: node
   linkType: hard
 
@@ -4115,7 +4115,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.48.0"
     astro: "npm:^5.16.3"
     astro-page-insight: "npm:^0.10.1"
-    astro-seo-meta: "npm:^5.2.0"
+    astro-seo-meta: "npm:^6.0.0"
     eslint: "npm:^9.39.1"
     eslint-config-prettier: "npm:^10.1.1"
     eslint-plugin-astro: "npm:^1.5.0"
